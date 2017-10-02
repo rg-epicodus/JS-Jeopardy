@@ -2,14 +2,13 @@ export let score = {
 
 
 
-  // changeScore: function(currentScore, questionValue, displayScore) {
-  //       console.log("in changeScore function");
-  //
-  //       let num1 = currentScore;
-  //       let num2 = questionValue;
-  //       console.log(`${num1} + ${num2} = ${num1 + num2}`);
-  //
-  // },
+  changeScore: function(currentScore, questionValue, displayScore) {
+        console.log("in changeScore function");
+        let num1 = currentScore;
+        let num2 = questionValue;
+        console.log(`${num1} + ${num2} = ${num1 + num2}`);
+
+  },
 
   randomQuestions: function(displayJson) {
     let min = Math.ceil(1);
@@ -25,6 +24,19 @@ export let score = {
         })
         .catch(console.log);
       },
+
+    getClues: function(displayClues) {
+
+    // let data[] =  data.push(this.randomQuestions());
+    concole.log(data);
+      let apiRequest2 = fetch(`http://jservice.io/api/clues?category=${test.id}`)
+          .then((res) => {
+            res.json().then((test2) => {
+              this.randomQuestions(test2);
+              console.log("test2");
+            });
+          })
+    }
 
 
 
