@@ -27,7 +27,7 @@ Table of contents
   Collaboration workflow will follow this method:
   ![ScreenShot](/img/scrumProcess.jpg)
 
-  
+
 
 
 ## Installation
@@ -70,7 +70,7 @@ If you would like to contribute to the project repository please do the followin
   *  http://jservice.io/api/clues random 100 clues
   *  http://jservice.io/api/categories?count=100 displays 100 categories
   *  http://jservice.io/api/category?id=306 displays clues from potpourri
-  *  http://jservice.io/api/category?id=18418 last category id
+  *  http://jservice.io/api/category?id=18416 last category id
   *  http://jservice.io/api/categories?count=6&offset=4500 6 random categories offset by a potential random number
   *  http://jservice.io/api/clues?category=500 clues from a random category
 
