@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  max-width: 95%;
+  margin: 0 auto;
+}
+
+.wrapper > div {
+  border: 2px solid rgb(233,171,88);
+  border-radius: 5px;
+  background: linear-gradient(90deg, #0000CC, #000066);
+  padding: 1em;
+  color: #FF0;
+  font-size: 2.4em;
+  text-align: center;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 0px;
+  grid-auto-rows: minmax(100px, auto);
+}
