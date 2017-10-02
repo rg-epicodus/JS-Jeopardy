@@ -22,11 +22,9 @@ $(function() {
 
 
   $(".rows").click(function(e) {
-    console.log(e.target.id);
-    console.log(q1.categoryId);
-    console.log(e)
     e.target.innerHTML = q1.question;
+    //array??
+    $(this).toggleClass('fullScreen')
 
-    e.target.id;//array??
   });
 });

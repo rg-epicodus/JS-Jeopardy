@@ -23,3 +23,12 @@
   grid-gap: 0px;
   grid-auto-rows: minmax(100px, auto);
 }
+
+.fullScreen {
+  z-index: 9999;
+  height:100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0; 
+}
