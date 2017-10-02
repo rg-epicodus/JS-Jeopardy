@@ -1,0 +1,19 @@
+{
+  "name": "js-jeopardy",
+  "description": "Jeopardy Web Application. This is a project to recreate the game show 'Jeopardy' in Javascript.  Please let us know if you have any hints or ideas for addition via the [Contributing](#contributing) area below.  Thank you.",
+  "main": "index.js",
+  "license": "ISC",
+  "homepage": "https://github.com/rg-epicodus/JS-Jeopardy",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+   "jquery": "^3.2.1",
+   "bootstrap": "^3.3.7",
+   "moment": "^2.18.1"
+ }
+}
