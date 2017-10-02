@@ -1,13 +1,7 @@
 export class Player {
 
-constructor(name, timeLeft){
+constructor(name, changeScore){
     this.name = name;
-    this.timeLeft = 10;
-  }
-
-  setAnswerTime() {
-    setInterval(() => {
-      this.timeLeft--;
-    }, 1000);
+    this.changeScore = 200;
   }
 }
