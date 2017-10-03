@@ -11,13 +11,13 @@ export class Question {
 
 
  setTimer() {
-    let timeLeft =16;
+    let timeLeft = 6;
     let time = setInterval(function(){
       timeLeft--;
       console.log(timeLeft);
       if(timeLeft <=0){
         clearInterval(time);
-        return alert ("You're out of time!");
+        document.getElementById("timeOut").innerHTML="<p>Doh, out of time! Anyone else?</p>";
       }
     }, 1000);
   }

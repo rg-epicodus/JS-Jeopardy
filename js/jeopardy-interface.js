@@ -23,11 +23,10 @@ $(function() {
     e.target.innerHTML = q1.question;
     //array??
     $(this).toggleClass('fullScreen');
-
   });
 
   $(document).keydown('ctrl', function(e){
     if(e.ctrlKey)
     q1.setTimer();
-  });
+    });
 });

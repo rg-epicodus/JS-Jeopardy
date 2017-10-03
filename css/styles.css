@@ -33,3 +33,10 @@ button, .center {
   border: 1px solid red;
   background-image: radial-gradient(farthest-corner at 45px 45px , #FF9033 0%, #FF0000 100%);
 }
+
+#timeOut {
+  color: red;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 20px;
+}
