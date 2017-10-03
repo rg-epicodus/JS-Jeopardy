@@ -22,9 +22,16 @@ $(function() {
 
 
   $(".rows").click(function(e) {
-    e.target.innerHTML = q1.question;
-    //array??
-    $(this).toggleClass('fullScreen')
 
-  });
+    e.target.innerHTML = q1.question;
+
+    //array??
+    $(this).toggleClass('fullScreen');
+  //   $(this).append("<br><br><div id='questionContainer'><input id='question'><br><button type='submit' class='btn'>Submit</button></div>")
+  // });
+  //
+  // $("#question").click(function(e){
+  //   console.log("hey");
+  // })
+
 });
