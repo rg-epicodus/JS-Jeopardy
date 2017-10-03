@@ -5,19 +5,19 @@ let q2 = new Question("Fastest land mammal", "Cheetah", "1000", 2, 1, "Mammals")
 
 $(function() {
   for(let i=0 ; i < 6 ; i ++) {
-    $(".wrapper").append("<div class='rows' id='col" + i + "'><span id=" + i +">$200</span></div>");
+    $(".wrapper").append("<div class='rows' id='col" + i + "'>$200</div>");
   }
   for(let i=0 ; i < 6 ; i ++) {
-    $(".wrapper").append("<div class='rows' id='col" + i + "'><span id=" + i +">$400</span></div>");
+    $(".wrapper").append("<div class='rows' id='col" + i + "'>$400</div>");
   }
   for(let i=0 ; i < 6 ; i ++) {
-    $(".wrapper").append("<div class='rows' id='col" + i + "'><span id=" + i +">$600</span></div>");
+    $(".wrapper").append("<div class='rows' id='col" + i + "'>$600</div>");
   }
   for(let i=0 ; i < 6 ; i ++) {
-    $(".wrapper").append("<div class='rows' id='col" + i + "'><span id=" + i +">$800</span></div>");
+    $(".wrapper").append("<div class='rows' id='col" + i + "'>$800</div>");
   }
   for(let i=0 ; i < 6 ; i ++) {
-    $(".wrapper").append("<div class='rows' id='col" + i + "'><span id=" + i +">$1000</span></div>");
+    $(".wrapper").append("<div class='rows' id='col" + i + "'>$1000</div>");
   }
 
 
