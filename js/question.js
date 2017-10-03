@@ -17,20 +17,24 @@ export class Question {
       console.log(timeLeft);
       if(timeLeft <=0){
         clearInterval(time);
-        return console.log("out of time");
+        return alert ("You're out of time!");
       }
     }, 1000);
   }
 
-  // isCorrect(){
-  //   let totalScore = 0;
-  //   if(question.answer === userAnswer){
-  //     totalScore += changeScore(amount);
-  //   }else{
-  //     totalScore -= changeScore(amount);
-  //   }
-  //   return totalScore;
-  // }
+  changeScore(currentScore, questionValue, displayScore) {
+      console.log("in changeScore function");
+      let num1 = currentScore;
+      let num2 = questionValue;
+      console.log(`${num1} + ${num2} = ${num1 + num2}`);
+  }
+
+  isCorrect(){
+    if(this.answer === userAnswer){
+      clearInterval(this.time);
+      return this.changeScore();
+    }
+  }
   //
   // gameOver(){
   //   let roundCount = 0;

@@ -22,14 +22,14 @@
   grid-template-columns: repeat(6, 1fr);
   grid-gap: 0px;
   grid-auto-rows: minmax(100px, auto);
+  margin-bottom: 50px;
 }
 
-button {
-  margin-top: 20px;
-  margin-left: 40px;
+button, .center {
+  margin: auto;
   width:100px;
   height: 100px;
   border-radius:100%;
-  border: 1px solid #000;
-  background-color:red;
+  border: 1px solid red;
+  background-image: radial-gradient(farthest-corner at 45px 45px , #FF9033 0%, #FF0000 100%);
 }
