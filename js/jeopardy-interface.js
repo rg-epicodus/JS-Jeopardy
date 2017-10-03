@@ -12,9 +12,9 @@ $(document).ready(function() {
 
   }
 
-  function displayClues() {
-
-  }
+  // function displayClues() {
+  //   $('#displayClue').html(`<p>Your clues are: ${clues}`)
+  // }
 
 
   $('#userInputQuery').submit(function(e) {
@@ -23,7 +23,7 @@ $(document).ready(function() {
     let questionValue = 20;
     score.changeScore(currentScore, questionValue, displayScore);
     score.randomQuestions();
-    // score.getClues();
+    // score.getClues(displayClues);
   });
 
 
