@@ -14,17 +14,16 @@ firebase.initializeApp(config);
 
 
 
-
-export class Question {
-  constructor (question, answer, value, id, categoryId, categoryTitle) {
-    this.question = question;
-    this.answer = answer;
-    this.value = value;
-    this.id = id;
-    this.categoryId = categoryId;
-    this.categoryTitle = categoryTitle;
-  }
-}
+// export class Question {
+//   constructor (question, answer, value, id, categoryId, categoryTitle) {
+//     this.question = question;
+//     this.answer = answer;
+//     this.value = value;
+//     this.id = id;
+//     this.categoryId = categoryId;
+//     this.categoryTitle = categoryTitle;
+//   }
+// }
 
 export let score = {
 
@@ -33,7 +32,7 @@ export let score = {
         let num2 = questionValue;
   },
   randomQuestions: function(displayJson) {
-  let jeopardy = new Question();
+
     let min = Math.ceil(1);
     let max = Math.floor(18415);
     let result =  Math.floor((Math.random() * (max - min)) + min);
@@ -45,18 +44,40 @@ export let score = {
             for (let i = 0, len = test.length; i < len; i++)
             fetch(`http://jservice.io/api/clues?category=${test[i].id}`)
                 .then((res) => {
-                  res.json().then((test2) => {
-                   firebase.database().ref().push({
-                     test2
-                    });
+                  res.json().then((chunky) => {
+                  firebase.database().ref().push({
+                     chunky
+                  });
 
-              console.log(test2);
+              // console.log(chunky[0]);
                     });
 
                   });
                 });
           });
-        }
+        },
 
+    retrieveQuestion: function() {
 
-  };
+      // return firebase.database().ref().once('value').then(function(snapshot){
+      //
+      //   console.log(snapshot.node_.children_.root_.key);
+      //   console.log(snapshot.val());
+      //
+      //
+      //   let keyArray = [];
+      //   let obj = snapshot.val();
+      //   for(var i in obj) { keyArray.push(i) };
+      //   console.log(keyArray);
+      //
+      // })
+
+      return firebase.database().ref().on('value', function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+          var childData = childSnapshot.val();
+          console.log(childData);
+        });
+      });
+
+      }
+    }
