@@ -45,18 +45,44 @@ export let score = {
             for (let i = 0, len = test.length; i < len; i++)
             fetch(`http://jservice.io/api/clues?category=${test[i].id}`)
                 .then((res) => {
-                  res.json().then((test2) => {
+                  res.json().then((chunky) => {
                    firebase.database().ref().push({
-                     test2
+                     chunky
                     });
 
-              console.log(test2);
                     });
 
                   });
                 });
           });
-        }
+        },
+
+    retrieveQuestion: function() {
+      let childData = [];
+      return firebase.database().ref(child).once('value').then(function(snapshot){
+        snapshot.forEach(function(childSnapshot){
+          childData.push(childSnapshot.val());
+          console.log(childData[0]);
+
+        })
+      })
+
+    },
+
+    deleteDatabase: function() {
+      console.log("DELETE");
+      console.log("DELETE");
+      console.log("DELETE");
+
+           firebase.database().ref().remove()
+               .then( () => {
+                   console.log('You have been Deleted!');
+               })
+               .catch( e => {
+                   console.log(e.message);
+               });
+    }
+
 
 
   };

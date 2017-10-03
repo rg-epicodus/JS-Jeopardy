@@ -18,8 +18,15 @@ $(document).ready(function() {
     let questionValue = 20;
     score.changeScore(currentScore, questionValue, displayScore);
     score.randomQuestions();
+    score.retrieveQuestion();
     // score.getClues(displayClues);
   });
+
+  $('#nukeIt').click(function() {
+    score.deleteDatabase();
+    // score.getClues(displayClues);
+  });
+
 
 
 
