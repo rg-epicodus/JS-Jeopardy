@@ -1,3 +1,14 @@
+export class Question {
+  constructor (question, answer, value, id, categoryId, categoryTitle) {
+    this.question = question;
+    this.answer = answer;
+    this.value = value;
+    this.id = id;
+    this.categoryId = categoryId;
+    this.categoryTitle = categoryTitle;
+  }
+}
+
 export let score = {
 
   changeScore: function(currentScore, questionValue, displayScore) {
@@ -24,7 +35,7 @@ export let score = {
                   res.json().then((test2) => {
                     console.log(test2);
                   });
-                })
+                });
           });
         })
         .catch(console.log);

@@ -23,3 +23,21 @@
   grid-gap: 0px;
   grid-auto-rows: minmax(100px, auto);
 }
+
+/*#questionContainer {
+  pointer-events: all;
+}*/
+
+.rows.fullScreen {
+  pointer-events: none;
+  z-index: 9999;
+  height:100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-size: 100px;
+}
+/*.rows.fullScreen.questionContainer{
+  pointer-events: all;
+}*/
