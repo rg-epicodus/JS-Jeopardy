@@ -30,9 +30,4 @@ $(function() {
     if(e.ctrlKey)
     q1.setTimer();
   });
-
-  // $("button").click(function(){
-  //   q1.setTimer();
-  //   q1.isCorrect();
-  // });
 });
