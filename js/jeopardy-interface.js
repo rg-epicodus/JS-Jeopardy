@@ -26,9 +26,7 @@ $(function() {
 
   });
 
-  $("#try").click(function(){
-    q1.setAnswerTime();
-    alert("You're out of time, Stupid!");
+  $("button").click(function(){
+    q1.setTimer();
   });
-
 });
