@@ -56,38 +56,52 @@ export let score = {
                 });
           });
         },
-// document.getElementById ("checkAllTopicCheckBoxes").addEventListener ("click", myFunction, false);
 
     retrieveQuestion: function(elementId) {
-
+      let coorArray=elementId.split('');
+      let row=coorArray[0];
+      let col=coorArray[1];
       let childData = [];
       return firebase.database().ref().once('value').then(function(snapshot){
         snapshot.forEach(function(childSnapshot){
           childData.push(childSnapshot.val());
         })
 
-        console.log(childData[0].chunky[0].question);
-        console.log(childData[0].chunky[0].value);
+        document.getElementById(elementId).innerHTML = childData[col].chunky[row].question;
         console.log(childData[0].chunky[0].answer);
-        console.log(elementId);
+        console.log(row);
+        console.log(col);
 
 
       })
 
     },
 
-    deleteDatabase: function() {
-      console.log("DELETE");
-      console.log("DELETE");
-      console.log("DELETE");
+    populateCategories: function() {
+      let childData = [];
+      return firebase.database().ref().once('value').then(function(snapshot){
+        snapshot.forEach(function(childSnapshot){
+          childData.push(childSnapshot.val());
+        })
 
-           firebase.database().ref().remove()
-               .then( () => {
-                   console.log('You have been Deleted!');
-               })
-               .catch( e => {
-                   console.log(e.message);
-               });
+      console.log(childData[0].chunky[0].category.title)
+      document.getElementById('cat0').innerHTML = childData[0].chunky[0].category.title;
+      document.getElementById('cat1').innerHTML = childData[1].chunky[0].category.title;
+      document.getElementById('cat2').innerHTML = childData[2].chunky[0].category.title;
+      document.getElementById('cat3').innerHTML = childData[3].chunky[0].category.title;
+      document.getElementById('cat4').innerHTML = childData[4].chunky[0].category.title;
+      document.getElementById('cat5').innerHTML = childData[5].chunky[0].category.title;
+    })
+    },
+
+    deleteDatabase: function() {
+     firebase.database().ref().remove()
+         .then( () => {
+             console.log('You have been Deleted!');
+         })
+         .catch( e => {
+             console.log(e.message);
+         });
     }
 
 

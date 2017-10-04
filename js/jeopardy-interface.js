@@ -13,14 +13,14 @@ $(document).ready(function() {
 
   }
 
-  $('#userInputQuery').submit(function(e) {
+  $('#newGame').click(function(e) {
     e.preventDefault();
+    score.deleteDatabase();
     let currentScore = 10;
     let questionValue = 20;
     // score.changeScore(currentScore, questionValue, displayScore);
     score.randomQuestions();
-    score.retrieveQuestion();
-    // score.getClues(displayClues);
+    score.populateCategories()
   });
 
 
@@ -32,13 +32,6 @@ $(document).ready(function() {
 
 
 
-
-
-
-
-
-// let q1 = new Question("Elephants are poached for the ivory of these enlarged incisors", "tusks", "600", 1, 1, "Mammals");
-// let q2 = new Question("Fastest land mammal", "Cheetah", "1000", 2, 1, "Mammals");
   for(let i=0 ; i < 6 ; i ++) {
     $(".wrapper").append("<div class='header' id='cat" + i + "'>Category</div>");
   }
@@ -64,23 +57,9 @@ $(document).ready(function() {
     e.stopImmediatePropagation();
     let squareName = e.target.id;
     score.retrieveQuestion(e.target.id);
-    // console.log(e.target.id)
 
-
-
-
-
-    // e.target.innerHTML = q1.question;
-
-    //array??
     $(this).toggleClass('fullScreen');
 
-  //   $(this).append("<br><br><div id='questionContainer'><input id='question'><br><button type='submit' class='btn'>Submit</button></div>")
-  // });
-  //
-  // $("#question").click(function(e){
-  //   console.log("hey");
-  // })
 
 });
 
