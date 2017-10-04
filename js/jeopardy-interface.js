@@ -68,6 +68,10 @@ $(document).ready(function() {
     $('#score').empty().text(score);
   }
 
+  function checkAnswer(){
+    
+}
+
   $(".rows").click(function(e) {
     e.preventDefault();
     e.stopImmediatePropagation();
