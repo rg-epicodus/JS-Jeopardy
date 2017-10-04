@@ -15,7 +15,7 @@ $(document).ready(function() {
 
   $('#newGame').click(function(e) {
     e.preventDefault();
-    score.deleteDatabase();
+    // score.deleteDatabase();
     let currentScore = 10;
     let questionValue = 20;
     // score.changeScore(currentScore, questionValue, displayScore);

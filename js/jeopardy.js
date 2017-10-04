@@ -38,8 +38,10 @@ export let score = {
     let apiRequest1 = fetch(`http://jservice.io/api/categories?count=6&offset=${result}`)
         .then((res) => {
           res.json().then((test) => {
-            // console.log(test);
+            console.log(test);
+            console.log(test.length);
             // console.log(test[0].id);
+
             for (let i = 0, len = test.length; i < len; i++)
             fetch(`http://jservice.io/api/clues?category=${test[i].id}`)
                 .then((res) => {
