@@ -1,15 +1,18 @@
 
 import {Question} from './../js/jeopardy.js';
 import { score } from "./../js/jeopardy.js";
-// import { masterFirebaseConfig } from './api-keys';
+import { config } from './../api-keys';
 
 $(document).ready(function() {
 
+  var score = 0;
+
+
+  $(".wrapper").hide();
 
   function displayScore(currentScore, questionValue) {
     $('#displayScore').html(`<p>Your current score is: ${currentScore}`);
     $('#displayValue').html(`<p>Your question value is: ${questionValue}`);
-
   }
 
   $('#newGame').click(function(e) {
@@ -18,8 +21,23 @@ $(document).ready(function() {
     let currentScore = 10;
     let questionValue = 20;
     // score.changeScore(currentScore, questionValue, displayScore);
+
     score.randomQuestions();
     score.populateCategories()
+    score.retrieveQuestion();
+
+  });
+
+  //Start a new game
+  $('#newGame').click(function(e) {
+    e.preventDefault();
+    let currentScore = 10;
+    let questionValue = 20;
+
+      $(".welcome-page").hide();
+    $(".wrapper").show();
+
+   score.retrieveQuestion();
   });
 
 
@@ -27,8 +45,6 @@ $(document).ready(function() {
     score.deleteDatabase();
     // score.getClues(displayClues);
   });
-
-
 
 
   for(let i=0 ; i < 6 ; i ++) {
@@ -50,6 +66,14 @@ $(document).ready(function() {
     $(".wrapper").append("<div class='rows' id='4" + i + "'>$1000</div>");
   }
 
+  //clear score
+  function updateScore(){
+    $('#score').empty().text(score);
+  }
+
+  function checkAnswer(){
+    
+}
 
   $(".rows").click(function(e) {
     e.preventDefault();
@@ -61,6 +85,7 @@ $(document).ready(function() {
     $(this).show();
     $(this).addClass('fullScreen');
     // $(this).text("<input id='userResponse'><button id='answer' onclick='this.evaluateAnswer(userResponse.innerHTML)'>Submit Answer</button>");
+
 
 
 });

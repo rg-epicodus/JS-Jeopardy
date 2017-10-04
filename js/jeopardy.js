@@ -1,26 +1,8 @@
-
-export class Game {
-
-  constructor(player, category){
-      this.player = player;
-      this.category = category;
-  }
-}
-
 var firebase = require('firebase');
-// import { Config } from './api-keys';
+import { config } from './../api-keys';
 
 
-var config = {
-  apiKey: "AIzaSyDNteDOFq2R7ytg4AydC0Zny_NbU3y3R2U",
-  authDomain: "jeopardy-group.firebaseapp.com",
-  databaseURL: "https://jeopardy-group.firebaseio.com",
-  projectId: "jeopardy-group",
-  storageBucket: "jeopardy-group.appspot.com",
-  messagingSenderId: "1043046133282"
-};
 firebase.initializeApp(config);
-
 
 
 export let score = {
@@ -37,10 +19,6 @@ export let score = {
     let apiRequest1 = fetch(`http://jservice.io/api/categories?count=6&offset=${result}`)
         .then((res) => {
           res.json().then((test) => {
-            console.log(test);
-            console.log(test.length);
-            // console.log(test[0].id);
-
             for (let i = 0, len = test.length; i < len; i++)
             fetch(`http://jservice.io/api/clues?category=${test[i].id}`)
                 .then((res) => {
@@ -50,8 +28,7 @@ export let score = {
                      chunky
                     });
 
-
-                     });
+                   });
 
                   });
                 });
@@ -68,6 +45,7 @@ export let score = {
           childData.push(childSnapshot.val());
         })
 
+
         document.getElementById(elementId).innerHTML = childData[col].chunky[row].question + "<input id='userResponse'><button id='answer' type='submit'>Submit Answer</button>" ;
 
         $("#answer").click((e) => {
@@ -82,9 +60,7 @@ export let score = {
           }
         })
 
-
       })
-
     },
 
     evaluateAnswer: function(stuff) {
@@ -110,6 +86,7 @@ export let score = {
     },
 
     deleteDatabase: function() {
+
      firebase.database().ref().remove()
          .then( () => {
              console.log('You have been Deleted!');
@@ -120,5 +97,5 @@ export let score = {
     }
 
 
-
-      }
+    }
+}
