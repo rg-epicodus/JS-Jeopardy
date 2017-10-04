@@ -5,6 +5,7 @@ import { score } from "./../js/jeopardy.js";
 
 $(document).ready(function() {
   sessionStorage.setItem('homies', [1,2,3,4,4,5]);
+  var score = 0;
 
   $(".wrapper").hide();
 
@@ -62,6 +63,10 @@ $(document).ready(function() {
     $(".wrapper").append("<div class='rows' id='4" + i + "'>$1000</div>");
   }
 
+  //clear score
+  function updateScore(){
+    $('#score').empty().text(score);
+  }
 
   $(".rows").click(function(e) {
     e.preventDefault();
@@ -69,10 +74,6 @@ $(document).ready(function() {
     let squareName = e.target.id;
     score.retrieveQuestion(e.target.id);
     // console.log(e.target.id)
-
-
-
-
 
     // e.target.innerHTML = q1.question;
 
