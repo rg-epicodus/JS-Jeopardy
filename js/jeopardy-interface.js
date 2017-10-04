@@ -25,6 +25,9 @@ $(function() {
     $(this).toggleClass('fullScreen');
   });
 
+  var spanWidth = $('#intro span').width();
+  $('#intro').animate( { width: spanWidth }, 6000 );
+
   $(document).keydown('ctrl', function(e){
     if(e.ctrlKey)
     q1.setTimer();
