@@ -43,12 +43,13 @@ export let score = {
             fetch(`http://jservice.io/api/clues?category=${test[i].id}`)
                 .then((res) => {
                   res.json().then((chunky) => {
-                  firebase.database().ref().push({
-                     chunky
-                  });
 
-              // console.log(chunky[0]);
+                   firebase.database().ref().push({
+                     chunky
                     });
+
+
+                     });
 
                   });
                 });
@@ -57,12 +58,36 @@ export let score = {
 
     retrieveQuestion: function() {
 
-     return firebase.database().ref().on('value', function(snapshot) {
-        snapshot.forEach(function(childSnapshot) {
-          var childData = childSnapshot.val();
-          console.log(childData);
-        });
-      });
+      let childData = [];
+      return firebase.database().ref().once('value').then(function(snapshot){
+        snapshot.forEach(function(childSnapshot){
+          childData.push(childSnapshot.val());
+        })
+
+        console.log(childData[0].chunky[0].question);
+        console.log(childData[0].chunky[0].value);
+        console.log(childData[0].chunky[0].answer);
+
+
+      })
+
+    },
+
+    deleteDatabase: function() {
+      console.log("DELETE");
+      console.log("DELETE");
+      console.log("DELETE");
+
+           firebase.database().ref().remove()
+               .then( () => {
+                   console.log('You have been Deleted!');
+               })
+               .catch( e => {
+                   console.log(e.message);
+               });
+    }
+
+
 
       }
     }

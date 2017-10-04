@@ -17,11 +17,17 @@ $(document).ready(function() {
     e.preventDefault();
     let currentScore = 10;
     let questionValue = 20;
-    score.changeScore(currentScore, questionValue, displayScore);
+    // score.changeScore(currentScore, questionValue, displayScore);
     score.randomQuestions();
     score.retrieveQuestion();
     // score.getClues(displayClues);
   });
+
+  $('#nukeIt').click(function() {
+    score.deleteDatabase();
+    // score.getClues(displayClues);
+  });
+
 
 
 
