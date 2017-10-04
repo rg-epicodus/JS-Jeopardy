@@ -1,3 +1,12 @@
+
+export class Game {
+
+  constructor(player, category){
+      this.player = player;
+      this.category = category;
+  }
+}
+
 var firebase = require('firebase');
 // import { Config } from './api-keys';
 
@@ -13,17 +22,6 @@ var config = {
 firebase.initializeApp(config);
 
 
-
-// export class Question {
-//   constructor (question, answer, value, id, categoryId, categoryTitle) {
-//     this.question = question;
-//     this.answer = answer;
-//     this.value = value;
-//     this.id = id;
-//     this.categoryId = categoryId;
-//     this.categoryTitle = categoryTitle;
-//   }
-// }
 
 export let score = {
 
@@ -59,20 +57,7 @@ export let score = {
 
     retrieveQuestion: function() {
 
-      // return firebase.database().ref().once('value').then(function(snapshot){
-      //
-      //   console.log(snapshot.node_.children_.root_.key);
-      //   console.log(snapshot.val());
-      //
-      //
-      //   let keyArray = [];
-      //   let obj = snapshot.val();
-      //   for(var i in obj) { keyArray.push(i) };
-      //   console.log(keyArray);
-      //
-      // })
-
-      return firebase.database().ref().on('value', function(snapshot) {
+     return firebase.database().ref().on('value', function(snapshot) {
         snapshot.forEach(function(childSnapshot) {
           var childData = childSnapshot.val();
           console.log(childData);
@@ -81,3 +66,4 @@ export let score = {
 
       }
     }
+

@@ -1,3 +1,4 @@
+
 import {Question} from './../js/jeopardy.js';
 import { score } from "./../js/jeopardy.js";
 // import { masterFirebaseConfig } from './api-keys';
@@ -68,4 +69,5 @@ $(document).ready(function() {
   // })
 
 });
+
 });
