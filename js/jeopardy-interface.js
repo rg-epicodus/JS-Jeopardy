@@ -11,7 +11,6 @@ $(document).ready(function() {
   function displayScore(currentScore, questionValue) {
     $('#displayScore').html(`<p>Your current score is: ${currentScore}`);
     $('#displayValue').html(`<p>Your question value is: ${questionValue}`);
-
   }
 
   $('#userInputQuery').submit(function(e) {
@@ -25,11 +24,14 @@ $(document).ready(function() {
   });
 
   //Start a new game
-  $('#startNewGame').submit(function(e) {
+  $('#newGame').click(function(e) {
     e.preventDefault();
     let currentScore = 10;
     let questionValue = 20;
+
+      $(".welcome-page").hide();
     $(".wrapper").show();
+
    score.retrieveQuestion();
   });
 

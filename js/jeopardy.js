@@ -76,9 +76,7 @@ export let score = {
     },
 
     deleteDatabase: function() {
-      console.log("DELETE");
-      console.log("DELETE");
-      console.log("DELETE");
+    
 
            firebase.database().ref().remove()
                .then( () => {
