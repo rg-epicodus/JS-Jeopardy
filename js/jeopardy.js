@@ -59,43 +59,6 @@ export let score = {
 // document.getElementById ("checkAllTopicCheckBoxes").addEventListener ("click", myFunction, false);
 
     retrieveQuestion: function(elementId) {
-      let childData = [];
-     firebase.database().ref().once('value').then(function(snapshot){
-        snapshot.forEach(function(childSnapshot){
-          childData.push(childSnapshot.val());
-        })
-        // console.log(childData[0][0]);
-        console.log(childData[0])
-        console.log(elementId);
-        return childData;
-      })
-
-      },
-      // alert("test");
-      // alert(elementId);
-
-
-      // return firebase.database().ref().once('value').then(function(snapshot){
-      //
-      //   console.log(snapshot.node_.children_.root_.key);
-      //   console.log(snapshot.val());
-      //
-      //
-      //   let keyArray = [];
-      //   let obj = snapshot.val();
-      //   for(var i in obj) { keyArray.push(i) };
-      //   console.log(keyArray);
-      //
-      // })
-
-      // return firebase.database().ref().on('value', function(snapshot) {
-      //   snapshot.forEach(function(childSnapshot) {
-      //     var childData = childSnapshot.val();
-      //     console.log(childData);
-      //   });
-      // });
-
-      }
 
       let childData = [];
       return firebase.database().ref().once('value').then(function(snapshot){
@@ -106,6 +69,7 @@ export let score = {
         console.log(childData[0].chunky[0].question);
         console.log(childData[0].chunky[0].value);
         console.log(childData[0].chunky[0].answer);
+        console.log(elementId);
 
 
       })
@@ -129,4 +93,3 @@ export let score = {
 
 
       }
-    }

@@ -64,6 +64,7 @@ $(document).ready(function() {
     e.stopImmediatePropagation();
     let squareName = e.target.id;
     score.retrieveQuestion(e.target.id);
+    // console.log(e.target.id)
 
 
 
