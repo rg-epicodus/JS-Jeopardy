@@ -87,10 +87,10 @@ export let score = {
 
     },
 
-    evaluateAnswer: function(stuff) {
-        console.log(this.childData[col].chunky[row].answer);
-        // document.getElementById(elementId).innerHTML = childData[col].chunky[row].answer;
-    },
+    // evaluateAnswer: function(stuff) {
+    //     console.log(this.childData[col].chunky[row].answer);
+    //     // document.getElementById(elementId).innerHTML = childData[col].chunky[row].answer;
+    // },
 
     populateCategories: function() {
       let childData = [];
@@ -99,14 +99,14 @@ export let score = {
           childData.push(childSnapshot.val());
         })
 
-      console.log(childData[0].chunky[0].category.title)
-      document.getElementById('cat0').innerHTML = childData[0].chunky[0].category.title;
-      document.getElementById('cat1').innerHTML = childData[1].chunky[0].category.title;
-      document.getElementById('cat2').innerHTML = childData[2].chunky[0].category.title;
-      document.getElementById('cat3').innerHTML = childData[3].chunky[0].category.title;
-      document.getElementById('cat4').innerHTML = childData[4].chunky[0].category.title;
-      document.getElementById('cat5').innerHTML = childData[5].chunky[0].category.title;
-    })
+        console.log(childData[0].chunky[0].category.title)
+        document.getElementById('cat0').innerHTML = childData[0].chunky[0].category.title;
+        document.getElementById('cat1').innerHTML = childData[1].chunky[0].category.title;
+        document.getElementById('cat2').innerHTML = childData[2].chunky[0].category.title;
+        document.getElementById('cat3').innerHTML = childData[3].chunky[0].category.title;
+        document.getElementById('cat4').innerHTML = childData[4].chunky[0].category.title;
+        document.getElementById('cat5').innerHTML = childData[5].chunky[0].category.title;
+      })
     },
 
     deleteDatabase: function() {
