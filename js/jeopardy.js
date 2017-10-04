@@ -4,6 +4,7 @@ import { config } from './../api-keys';
 
 firebase.initializeApp(config);
 
+
 export let score = {
 
   changeScore: function(currentScore, questionValue, displayScore) {
@@ -22,7 +23,7 @@ export let score = {
             fetch(`http://jservice.io/api/clues?category=${test[i].id}`)
                 .then((res) => {
                   res.json().then((chunky) => {
-
+                    console.log(this);
                    firebase.database().ref().push({
                      chunky
                     });
@@ -35,26 +36,66 @@ export let score = {
         },
 
     retrieveQuestion: function(elementId) {
+      let coorArray=elementId.split('');
+      let row=coorArray[0];
+      let col=coorArray[1];
+      let childData = [];
+      return firebase.database().ref().once('value').then((snapshot) => {
+        snapshot.forEach((childSnapshot) => {
+          childData.push(childSnapshot.val());
+        })
 
+
+        document.getElementById(elementId).innerHTML = childData[col].chunky[row].question + "<input id='userResponse'><button id='answer' type='submit'>Submit Answer</button>" ;
+
+        $("#answer").click((e) => {
+          e.preventDefault();
+          let stuff = $("#userResponse").val().replace(/[^0-9<>a-z]/gi, '');
+          let newAnswer = childData[col].chunky[row].answer.replace(/[^0-9<>a-z]/gi, '');
+          console.log(newAnswer.toLowerCase());
+          if (newAnswer.toLowerCase().includes(stuff.toLowerCase()) === true) {
+            console.log("correct");
+          } else {
+            console.log("nope");
+          }
+        })
+
+      })
+    },
+
+    evaluateAnswer: function(stuff) {
+        console.log(this.childData[col].chunky[row].answer);
+        // document.getElementById(elementId).innerHTML = childData[col].chunky[row].answer;
+    },
+
+    populateCategories: function() {
       let childData = [];
       return firebase.database().ref().once('value').then(function(snapshot){
         snapshot.forEach(function(childSnapshot){
           childData.push(childSnapshot.val());
         })
-      })
+
+      console.log(childData[0].chunky[0].category.title)
+      document.getElementById('cat0').innerHTML = childData[0].chunky[0].category.title;
+      document.getElementById('cat1').innerHTML = childData[1].chunky[0].category.title;
+      document.getElementById('cat2').innerHTML = childData[2].chunky[0].category.title;
+      document.getElementById('cat3').innerHTML = childData[3].chunky[0].category.title;
+      document.getElementById('cat4').innerHTML = childData[4].chunky[0].category.title;
+      document.getElementById('cat5').innerHTML = childData[5].chunky[0].category.title;
+    })
     },
 
     deleteDatabase: function() {
 
-    
+     firebase.database().ref().remove()
+         .then( () => {
+             console.log('You have been Deleted!');
+         })
+         .catch( e => {
+             console.log(e.message);
+         });
+    }
 
-           firebase.database().ref().remove()
-               .then( () => {
-                   console.log('You have been Deleted!');
-               })
-               .catch( e => {
-                   console.log(e.message);
-               });
 
     }
 }

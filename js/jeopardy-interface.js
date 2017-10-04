@@ -4,8 +4,9 @@ import { score } from "./../js/jeopardy.js";
 import { config } from './../api-keys';
 
 $(document).ready(function() {
-  sessionStorage.setItem('homies', [1,2,3,4,4,5]);
+
   var score = 0;
+
 
   $(".wrapper").hide();
 
@@ -14,14 +15,17 @@ $(document).ready(function() {
     $('#displayValue').html(`<p>Your question value is: ${questionValue}`);
   }
 
-  $('#userInputQuery').submit(function(e) {
+  $('#newGame').click(function(e) {
     e.preventDefault();
+    // score.deleteDatabase();
     let currentScore = 10;
     let questionValue = 20;
     // score.changeScore(currentScore, questionValue, displayScore);
-    //score.randomQuestions();
+
+    score.randomQuestions();
+    score.populateCategories()
     score.retrieveQuestion();
-    // score.getClues(displayClues);
+
   });
 
   //Start a new game
@@ -42,8 +46,7 @@ $(document).ready(function() {
     // score.getClues(displayClues);
   });
 
-// let q1 = new Question("Elephants are poached for the ivory of these enlarged incisors", "tusks", "600", 1, 1, "Mammals");
-// let q2 = new Question("Fastest land mammal", "Cheetah", "1000", 2, 1, "Mammals");
+
   for(let i=0 ; i < 6 ; i ++) {
     $(".wrapper").append("<div class='header' id='cat" + i + "'>Category</div>");
   }
@@ -74,22 +77,16 @@ $(document).ready(function() {
 
   $(".rows").click(function(e) {
     e.preventDefault();
-    e.stopImmediatePropagation();
+    // e.stopImmediatePropagation();
     let squareName = e.target.id;
     score.retrieveQuestion(e.target.id);
-    // console.log(e.target.id)
+    $(".btn").hide();
+    $(".rows").hide();
+    $(this).show();
+    $(this).addClass('fullScreen');
+    // $(this).text("<input id='userResponse'><button id='answer' onclick='this.evaluateAnswer(userResponse.innerHTML)'>Submit Answer</button>");
 
-    // e.target.innerHTML = q1.question;
 
-    //array??
-    $(this).toggleClass('fullScreen');
-
-  //   $(this).append("<br><br><div id='questionContainer'><input id='question'><br><button type='submit' class='btn'>Submit</button></div>")
-  // });
-  //
-  // $("#question").click(function(e){
-  //   console.log("hey");
-  // })
 
 });
 
