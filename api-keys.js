@@ -6,4 +6,3 @@ export let config = {
     storageBucket: "jeopardy-group.appspot.com",
     messagingSenderId: "1043046133282"
   };
-  firebase.initializeApp(config);
