@@ -5,12 +5,13 @@ import { config } from './../api-keys';
 
 $(document).ready(function() {
   sessionStorage.setItem('homies', [1,2,3,4,4,5]);
+  var score = 0;
 
+  $(".wrapper").hide();
 
   function displayScore(currentScore, questionValue) {
     $('#displayScore').html(`<p>Your current score is: ${currentScore}`);
     $('#displayValue').html(`<p>Your question value is: ${questionValue}`);
-
   }
 
   $('#userInputQuery').submit(function(e) {
@@ -18,9 +19,21 @@ $(document).ready(function() {
     let currentScore = 10;
     let questionValue = 20;
     // score.changeScore(currentScore, questionValue, displayScore);
-    score.randomQuestions();
+    //score.randomQuestions();
     score.retrieveQuestion();
     // score.getClues(displayClues);
+  });
+
+  //Start a new game
+  $('#newGame').click(function(e) {
+    e.preventDefault();
+    let currentScore = 10;
+    let questionValue = 20;
+
+      $(".welcome-page").hide();
+    $(".wrapper").show();
+
+   score.retrieveQuestion();
   });
 
 
@@ -28,14 +41,6 @@ $(document).ready(function() {
     score.deleteDatabase();
     // score.getClues(displayClues);
   });
-
-
-
-
-
-
-
-
 
 // let q1 = new Question("Elephants are poached for the ivory of these enlarged incisors", "tusks", "600", 1, 1, "Mammals");
 // let q2 = new Question("Fastest land mammal", "Cheetah", "1000", 2, 1, "Mammals");
@@ -58,6 +63,14 @@ $(document).ready(function() {
     $(".wrapper").append("<div class='rows' id='4" + i + "'>$1000</div>");
   }
 
+  //clear score
+  function updateScore(){
+    $('#score').empty().text(score);
+  }
+
+  function checkAnswer(){
+    
+}
 
   $(".rows").click(function(e) {
     e.preventDefault();
@@ -65,10 +78,6 @@ $(document).ready(function() {
     let squareName = e.target.id;
     score.retrieveQuestion(e.target.id);
     // console.log(e.target.id)
-
-
-
-
 
     // e.target.innerHTML = q1.question;
 

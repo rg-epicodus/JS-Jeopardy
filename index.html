@@ -10,31 +10,45 @@
 
     <script src="build/js/vendor.min.js"></script>
     <link href="css/styles.css" rel="stylesheet"  type="text/css">
+    <link href="css/m-buttons.css" rel="stylesheet"  type="text/css">
+
     <script type="text/javascript" src="build/js/app.js"></script>
     <title>Epicodus Jeopardy</title>
   </head>
 
   <body>
 
-      <h1 id="intro"><span>THIS IS JEOPARDY!</span></h1>
+
+      <h1 id="intro"><span class="welcome-page">THIS IS JEOPARDY!<span></h1>
+        <p class="welcome-page">Welcome to Jeopardy online game wanting a fun "flash card system" to review concepts. The program allows select category that you specify(It's preloaded).
+  Begin by clicking "New Game". Enter your answers on following the header line, in the format specified.</p>
 
 
     <div class="wrapper">
     </div>
     <div class="container">
-      <h1>Press button to do thing</h1>
+      <!-- <h1>Press button to do thing</h1> -->
       <form  id="userInputQuery">
         <button type="submit" class="btn btn-success">Go</button>
       </form>
       <div >
         <button type="button" id="nukeIt">Nuke it</button>
       </div>
+
+
+          <button type="button" id="newGame"class="m-btn green rnd">Start New Game</button>
+
     </div>
+    <!--display score  -->
+    <div class="panel-footer">
+		<div class="pull-right"><h4>Score: <span id="score">0</span></h4></div>
+		<div class="clearfix"></div>
+    </div>
+
     <div class="container">
       <p id="displayScore"></p>
       <p id="displayValue"></p>
       <p id="displayClue"></p>
-
     </div>
     <p id="playerName"></p>
   <div class="center">
@@ -42,5 +56,7 @@
   </div>
 
   <div id="timeOut"></div>
+
+
   </body>
 </html>

@@ -26,7 +26,9 @@ export let score = {
                    firebase.database().ref().push({
                      chunky
                     });
+
                    });
+
                   });
                 });
           });
@@ -43,12 +45,16 @@ export let score = {
     },
 
     deleteDatabase: function() {
-     firebase.database().ref().remove()
-         .then( () => {
-             console.log('You have been Deleted!');
-         })
-         .catch( e => {
-             console.log(e.message);
-         });
+
+    
+
+           firebase.database().ref().remove()
+               .then( () => {
+                   console.log('You have been Deleted!');
+               })
+               .catch( e => {
+                   console.log(e.message);
+               });
+
     }
 }
