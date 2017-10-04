@@ -1,3 +1,12 @@
+
+export class Game {
+
+  constructor(player, category){
+      this.player = player;
+      this.category = category;
+  }
+}
+
 var firebase = require('firebase');
 // import { Config } from './api-keys';
 
@@ -14,18 +23,6 @@ firebase.initializeApp(config);
 
 
 
-
-export class Question {
-  constructor (question, answer, value, id, categoryId, categoryTitle) {
-    this.question = question;
-    this.answer = answer;
-    this.value = value;
-    this.id = id;
-    this.categoryId = categoryId;
-    this.categoryTitle = categoryTitle;
-  }
-}
-
 export let score = {
 
   changeScore: function(currentScore, questionValue, displayScore) {
@@ -33,7 +30,7 @@ export let score = {
         let num2 = questionValue;
   },
   randomQuestions: function(displayJson) {
-  let jeopardy = new Question();
+
     let min = Math.ceil(1);
     let max = Math.floor(18415);
     let result =  Math.floor((Math.random() * (max - min)) + min);
@@ -46,11 +43,13 @@ export let score = {
             fetch(`http://jservice.io/api/clues?category=${test[i].id}`)
                 .then((res) => {
                   res.json().then((chunky) => {
+
                    firebase.database().ref().push({
                      chunky
                     });
 
-                    });
+
+                     });
 
                   });
                 });
@@ -58,6 +57,7 @@ export let score = {
         },
 
     retrieveQuestion: function() {
+
       let childData = [];
       return firebase.database().ref().once('value').then(function(snapshot){
         snapshot.forEach(function(childSnapshot){
@@ -89,4 +89,6 @@ export let score = {
 
 
 
-  };
+      }
+    }
+
