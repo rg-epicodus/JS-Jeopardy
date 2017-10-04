@@ -49,7 +49,6 @@ export let score = {
                      chunky
                     });
 
-
                      });
 
                   });

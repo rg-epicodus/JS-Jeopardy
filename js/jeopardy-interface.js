@@ -6,6 +6,7 @@ import { score } from "./../js/jeopardy.js";
 $(document).ready(function() {
   sessionStorage.setItem('homies', [1,2,3,4,4,5]);
 
+  $(".wrapper").hide();
 
   function displayScore(currentScore, questionValue) {
     $('#displayScore').html(`<p>Your current score is: ${currentScore}`);
@@ -18,9 +19,18 @@ $(document).ready(function() {
     let currentScore = 10;
     let questionValue = 20;
     // score.changeScore(currentScore, questionValue, displayScore);
-    score.randomQuestions();
+    //score.randomQuestions();
     score.retrieveQuestion();
     // score.getClues(displayClues);
+  });
+
+  //Start a new game
+  $('#startNewGame').submit(function(e) {
+    e.preventDefault();
+    let currentScore = 10;
+    let questionValue = 20;
+    $(".wrapper").show();
+   score.retrieveQuestion();
   });
 
 
@@ -28,14 +38,6 @@ $(document).ready(function() {
     score.deleteDatabase();
     // score.getClues(displayClues);
   });
-
-
-
-
-
-
-
-
 
 // let q1 = new Question("Elephants are poached for the ivory of these enlarged incisors", "tusks", "600", 1, 1, "Mammals");
 // let q2 = new Question("Fastest land mammal", "Cheetah", "1000", 2, 1, "Mammals");
