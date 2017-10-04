@@ -61,3 +61,6 @@ tmp/
 # bower #
 ###########
 bower_components/
+
+# Firebase credentials #
+/src/app/api-keys.ts

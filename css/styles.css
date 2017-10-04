@@ -25,6 +25,7 @@
   margin-bottom: 50px;
 }
 
+
 button, .center {
   margin: auto;
   width:100px;
@@ -42,3 +43,22 @@ button, .center {
   font-size: 20px;
 }
 #intro {color: red; width: 0px; height: 2em; white-space: nowrap; overflow: hidden; margin: auto }
+
+/*#questionContainer {
+  pointer-events: all;
+}*/
+
+.rows.fullScreen {
+  pointer-events: none;
+  z-index: 9999;
+  height:100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-size: 100px;
+}
+/*.rows.fullScreen.questionContainer{
+  pointer-events: all;
+}*/
+

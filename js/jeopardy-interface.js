@@ -1,35 +1,73 @@
-import {Question} from './../js/question.js';
 
-let q1 = new Question("Elephants are poached for the ivory of these enlarged incisors", "tusks", "600", 1, 1, "Mammals");
-let q2 = new Question("Fastest land mammal", "Cheetah", "1000", 2, 1, "Mammals");
+import {Question} from './../js/jeopardy.js';
+import { score } from "./../js/jeopardy.js";
+// import { masterFirebaseConfig } from './api-keys';
 
-$(function() {
-  for(let i=0 ; i < 6 ; i ++) {
-    $(".wrapper").append("<div class='rows' id='col" + i + "'><span id=" + i +">$200</span></div>");
+$(document).ready(function() {
+  sessionStorage.setItem('homies', [1,2,3,4,4,5]);
+
+
+  function displayScore(currentScore, questionValue) {
+    $('#displayScore').html(`<p>Your current score is: ${currentScore}`);
+    $('#displayValue').html(`<p>Your question value is: ${questionValue}`);
+
   }
-  for(let i=0 ; i < 6 ; i ++) {
-    $(".wrapper").append("<div class='rows' id='col" + i + "'><span id=" + i +">$400</span></div>");
-  }
-  for(let i=0 ; i < 6 ; i ++) {
-    $(".wrapper").append("<div class='rows' id='col" + i + "'><span id=" + i +">$600</span></div>");
-  }
-  for(let i=0 ; i < 6 ; i ++) {
-    $(".wrapper").append("<div class='rows' id='col" + i + "'><span id=" + i +">$800</span></div>");
-  }
-  for(let i=0 ; i < 6 ; i ++) {
-    $(".wrapper").append("<div class='rows' id='col" + i + "'><span id=" + i +">$1000</span></div>");
-  }
-  $(".rows").click(function(e) {
-    e.target.innerHTML = q1.question;
-    //array??
-    $(this).toggleClass('fullScreen');
+
+  $('#userInputQuery').submit(function(e) {
+    e.preventDefault();
+    let currentScore = 10;
+    let questionValue = 20;
+    score.changeScore(currentScore, questionValue, displayScore);
+    score.randomQuestions();
+    score.retrieveQuestion();
+    // score.getClues(displayClues);
   });
 
-  var spanWidth = $('#intro span').width();
-  $('#intro').animate( { width: spanWidth }, 6000 );
 
-  $(document).keydown('ctrl', function(e){
-    if(e.ctrlKey)
-    q1.setTimer();
-    });
+
+
+
+
+
+// let q1 = new Question("Elephants are poached for the ivory of these enlarged incisors", "tusks", "600", 1, 1, "Mammals");
+// let q2 = new Question("Fastest land mammal", "Cheetah", "1000", 2, 1, "Mammals");
+
+  for(let i=0 ; i < 6 ; i ++) {
+    $(".wrapper").append("<div class='rows' id='row1-" + i + "'>$200</div>");
+  }
+  for(let i=0 ; i < 6 ; i ++) {
+    $(".wrapper").append("<div class='rows' id='row2-" + i + "'>$400</div>");
+  }
+  for(let i=0 ; i < 6 ; i ++) {
+    $(".wrapper").append("<div class='rows' id='row3-" + i + "'>$600</div>");
+  }
+  for(let i=0 ; i < 6 ; i ++) {
+    $(".wrapper").append("<div class='rows' id='row4-" + i + "'>$800</div>");
+  }
+  for(let i=0 ; i < 6 ; i ++) {
+    $(".wrapper").append("<div class='rows' id='row5-" + i + "'>$1000</div>");
+  }
+
+
+  $(".rows").click(function(e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    let squareName = e.target.id;
+    console.log(e.target);
+
+
+
+    // e.target.innerHTML = q1.question;
+
+    //array??
+    $(this).toggleClass('fullScreen');
+  //   $(this).append("<br><br><div id='questionContainer'><input id='question'><br><button type='submit' class='btn'>Submit</button></div>")
+  // });
+  //
+  // $("#question").click(function(e){
+  //   console.log("hey");
+  // })
+
+});
+
 });
