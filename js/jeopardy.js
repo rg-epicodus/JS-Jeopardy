@@ -25,6 +25,11 @@ firebase.initializeApp(config);
 //   }
 // }
 
+// function retrieveQuestion(elementId) {
+//   alert("test");
+//   alert(elementId);
+// }
+
 export let score = {
 
   changeScore: function(currentScore, questionValue, displayScore) {
@@ -56,8 +61,23 @@ export let score = {
                 });
           });
         },
+// document.getElementById ("checkAllTopicCheckBoxes").addEventListener ("click", myFunction, false);
 
-    retrieveQuestion: function() {
+    retrieveQuestion: function(elementId) {
+      let childData = [];
+     firebase.database().ref().once('value').then(function(snapshot){
+        snapshot.forEach(function(childSnapshot){
+          childData.push(childSnapshot.val());
+        })
+        // console.log(childData[0][0]);
+        console.log(childData[0])
+        console.log(elementId);
+        return childData;
+      })
+
+      },
+      // alert("test");
+      // alert(elementId);
 
       // return firebase.database().ref().once('value').then(function(snapshot){
       //
@@ -72,12 +92,11 @@ export let score = {
       //
       // })
 
-      return firebase.database().ref().on('value', function(snapshot) {
-        snapshot.forEach(function(childSnapshot) {
-          var childData = childSnapshot.val();
-          console.log(childData);
-        });
-      });
+      // return firebase.database().ref().on('value', function(snapshot) {
+      //   snapshot.forEach(function(childSnapshot) {
+      //     var childData = childSnapshot.val();
+      //     console.log(childData);
+      //   });
+      // });
 
       }
-    }
