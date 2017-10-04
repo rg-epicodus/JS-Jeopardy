@@ -22,7 +22,9 @@ var config = {
 firebase.initializeApp(config);
 
 
-
+function evaluateAnswer() {
+  alert("test");
+}
 
 export let score = {
 
@@ -69,7 +71,7 @@ export let score = {
           childData.push(childSnapshot.val());
         })
 
-        document.getElementById(elementId).innerHTML = childData[col].chunky[row].question;
+        document.getElementById(elementId).innerHTML = childData[col].chunky[row].question + "<input id='userResponse'><button id='answer' onclick='evaluateAnswer(userResponse.value)'>Submit Answer</button>" ;
         console.log(childData[0].chunky[0].answer);
         console.log(row);
         console.log(col);
@@ -78,6 +80,11 @@ export let score = {
       })
 
     },
+
+    // evaluateAnswer: function(userResponse) {
+    //   // document.getElementById('userResponse').innerHTML
+    //   console.log(userResponse);
+    // },
 
     populateCategories: function() {
       let childData = [];

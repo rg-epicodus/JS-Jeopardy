@@ -56,9 +56,15 @@ button, .center {
   position: fixed;
   top: 0;
   left: 0;
-  font-size: 100px;
+  font-size: 4vw;
 }
-/*.rows.fullScreen.questionContainer{
+input {
   pointer-events: all;
-}*/
-
+  color: black;
+  display: block;
+  margin: auto;
+  margin-top: 100px;
+}
+#answer{
+  pointer-events: all;
+}

@@ -54,11 +54,14 @@ $(document).ready(function() {
 
   $(".rows").click(function(e) {
     e.preventDefault();
-    e.stopImmediatePropagation();
+    // e.stopImmediatePropagation();
     let squareName = e.target.id;
     score.retrieveQuestion(e.target.id);
-
-    $(this).toggleClass('fullScreen');
+    $(".btn").hide();
+    $(".rows").hide();
+    $(this).show();
+    $(this).addClass('fullScreen');
+    // $(this).text("<input id='userResponse'><button id='answer' onclick='this.evaluateAnswer(userResponse.innerHTML)'>Submit Answer</button>");
 
 
 });
