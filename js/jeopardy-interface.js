@@ -23,6 +23,7 @@ $(document).ready(function() {
     // score.getClues(displayClues);
   });
 
+
   $('#nukeIt').click(function() {
     score.deleteDatabase();
     // score.getClues(displayClues);
@@ -35,23 +36,26 @@ $(document).ready(function() {
 
 
 
+
 // let q1 = new Question("Elephants are poached for the ivory of these enlarged incisors", "tusks", "600", 1, 1, "Mammals");
 // let q2 = new Question("Fastest land mammal", "Cheetah", "1000", 2, 1, "Mammals");
-
   for(let i=0 ; i < 6 ; i ++) {
-    $(".wrapper").append("<div class='rows' id='row1-" + i + "'>$200</div>");
+    $(".wrapper").append("<div class='header' id='cat" + i + "'>Category</div>");
   }
   for(let i=0 ; i < 6 ; i ++) {
-    $(".wrapper").append("<div class='rows' id='row2-" + i + "'>$400</div>");
+    $(".wrapper").append("<div class='rows' id='0" + i + "'>$200</div>");
   }
   for(let i=0 ; i < 6 ; i ++) {
-    $(".wrapper").append("<div class='rows' id='row3-" + i + "'>$600</div>");
+    $(".wrapper").append("<div class='rows' id='1" + i + "'>$400</div>");
   }
   for(let i=0 ; i < 6 ; i ++) {
-    $(".wrapper").append("<div class='rows' id='row4-" + i + "'>$800</div>");
+    $(".wrapper").append("<div class='rows' id='2" + i + "'>$600</div>");
   }
   for(let i=0 ; i < 6 ; i ++) {
-    $(".wrapper").append("<div class='rows' id='row5-" + i + "'>$1000</div>");
+    $(".wrapper").append("<div class='rows' id='3" + i + "'>$800</div>");
+  }
+  for(let i=0 ; i < 6 ; i ++) {
+    $(".wrapper").append("<div class='rows' id='4" + i + "'>$1000</div>");
   }
 
 
@@ -59,7 +63,9 @@ $(document).ready(function() {
     e.preventDefault();
     e.stopImmediatePropagation();
     let squareName = e.target.id;
-    console.log(e.target);
+    score.retrieveQuestion(e.target.id);
+
+
 
 
 
@@ -67,6 +73,7 @@ $(document).ready(function() {
 
     //array??
     $(this).toggleClass('fullScreen');
+
   //   $(this).append("<br><br><div id='questionContainer'><input id='question'><br><button type='submit' class='btn'>Submit</button></div>")
   // });
   //
