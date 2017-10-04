@@ -59,12 +59,16 @@ export let score = {
 
     retrieveQuestion: function() {
       let childData = [];
-      return firebase.database().ref(child).once('value').then(function(snapshot){
+      return firebase.database().ref().once('value').then(function(snapshot){
         snapshot.forEach(function(childSnapshot){
           childData.push(childSnapshot.val());
-          console.log(childData[0]);
-
         })
+
+        console.log(childData[0].chunky[0].question);
+        console.log(childData[0].chunky[0].value);
+        console.log(childData[0].chunky[0].answer);
+
+
       })
 
     },
