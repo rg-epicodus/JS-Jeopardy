@@ -22,9 +22,6 @@ var config = {
 firebase.initializeApp(config);
 
 
-function evaluateAnswer() {
-  alert("test");
-}
 
 export let score = {
 
@@ -48,7 +45,7 @@ export let score = {
             fetch(`http://jservice.io/api/clues?category=${test[i].id}`)
                 .then((res) => {
                   res.json().then((chunky) => {
-
+                    console.log(this);
                    firebase.database().ref().push({
                      chunky
                     });
@@ -66,25 +63,33 @@ export let score = {
       let row=coorArray[0];
       let col=coorArray[1];
       let childData = [];
-      return firebase.database().ref().once('value').then(function(snapshot){
-        snapshot.forEach(function(childSnapshot){
+      return firebase.database().ref().once('value').then((snapshot) => {
+        snapshot.forEach((childSnapshot) => {
           childData.push(childSnapshot.val());
         })
 
-        document.getElementById(elementId).innerHTML = childData[col].chunky[row].question + "<input id='userResponse'><button id='answer' onclick='evaluateAnswer(userResponse.value)'>Submit Answer</button>" ;
-        console.log(childData[0].chunky[0].answer);
-        console.log(row);
-        console.log(col);
+        document.getElementById(elementId).innerHTML = childData[col].chunky[row].question + "<input id='userResponse'><button id='answer' type='submit'>Submit Answer</button>" ;
+
+        $("#answer").click((e) => {
+          e.preventDefault();
+          let stuff = $("#userResponse").val();
+          console.log(childData[col].chunky[row].answer.toLowerCase());
+          if (childData[col].chunky[row].answer.toLowerCase().includes(stuff.toLowerCase()) === true) {
+            console.log("correct");
+          } else {
+            console.log("nope");
+          }
+        })
 
 
       })
 
     },
 
-    // evaluateAnswer: function(userResponse) {
-    //   // document.getElementById('userResponse').innerHTML
-    //   console.log(userResponse);
-    // },
+    evaluateAnswer: function(stuff) {
+        console.log(this.childData[col].chunky[row].answer);
+        // document.getElementById(elementId).innerHTML = childData[col].chunky[row].answer;
+    },
 
     populateCategories: function() {
       let childData = [];

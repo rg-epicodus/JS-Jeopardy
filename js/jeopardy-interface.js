@@ -4,7 +4,6 @@ import { score } from "./../js/jeopardy.js";
 // import { masterFirebaseConfig } from './api-keys';
 
 $(document).ready(function() {
-  sessionStorage.setItem('homies', [1,2,3,4,4,5]);
 
 
   function displayScore(currentScore, questionValue) {
