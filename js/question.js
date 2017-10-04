@@ -10,20 +10,20 @@ export class Question {
   }
 
 
- setTimer() {
-    let timeLeft = 16;
-    let time = setInterval(function(){
-      timeLeft--;
-      if(timeLeft < 10){
-        timeLeft = "0" + timeLeft;
-      }
-      document.getElementById("timeOut").innerHTML="00:" + timeLeft;      console.log(timeLeft);
-      if(timeLeft <=0){
-        clearInterval(time);
-        document.getElementById("timeOut").innerHTML="<p>Doh, out of time! </p>";
-      }
-    }, 1000);
-  }
+ // setTimer() {
+ //    let timeLeft = 16;
+ //    let time = setInterval(function(){
+ //      timeLeft--;
+ //      if(timeLeft < 10){
+ //        timeLeft = "0" + timeLeft;
+ //      }
+ //      document.getElementById("timeOut").innerHTML="00:" + timeLeft;      console.log(timeLeft);
+ //      if(timeLeft <=0){
+ //        clearInterval(time);
+ //        document.getElementById("timeOut").innerHTML="<p>Doh, out of time! </p>";
+ //      }
+ //    }, 1000);
+ //  }
 
   changeScore(currentScore, questionValue, displayScore) {
       console.log("in changeScore function");

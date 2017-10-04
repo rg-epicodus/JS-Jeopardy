@@ -29,14 +29,6 @@ $(document).ready(function() {
     // score.getClues(displayClues);
   });
 
-
-
-
-
-
-
-
-
 // let q1 = new Question("Elephants are poached for the ivory of these enlarged incisors", "tusks", "600", 1, 1, "Mammals");
 // let q2 = new Question("Fastest land mammal", "Cheetah", "1000", 2, 1, "Mammals");
   for(let i=0 ; i < 6 ; i ++) {
@@ -66,10 +58,6 @@ $(document).ready(function() {
     score.retrieveQuestion(e.target.id);
     // console.log(e.target.id)
 
-
-
-
-
     // e.target.innerHTML = q1.question;
 
     //array??
@@ -83,5 +71,13 @@ $(document).ready(function() {
   // })
 
 });
+
+$("#hitMe").keydown(function(e) {
+  if(e.keyCode === 17){
+      score.setTimer();}
+});
+// $("#hitMe").click(function(){
+//   score.setTimer();
+// });
 
 });

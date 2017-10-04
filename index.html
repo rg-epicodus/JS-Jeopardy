@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="build/css/vendor.css">
 
-
     <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
 
     <script src="build/js/vendor.min.js"></script>
     <link href="css/styles.css" rel="stylesheet"  type="text/css">
     <script type="text/javascript" src="build/js/app.js"></script>
+
     <title>Epicodus Jeopardy</title>
   </head>
 
@@ -30,15 +30,23 @@
 
 
     </div>
+
     <div class="container">
       <h1>Press button to do thing</h1>
-      <form  id="userInputQuery">
-        <button type="submit" class="btn btn-success">Go</button>
-      </form>
-      <div >
-        <button type="button" id="nukeIt">Nuke it</button>
+      <div>
+        <form  id="userInputQuery">
+          <button type="submit" class="btn btn-success">Go</button>
+        </form>
+      </div>&nbsp;
+      <div>
+        <button type="button" class="btn btn-warning" id="nukeIt">Nuke it</button>
       </div>
     </div>
+
+    <div class="center">
+      <button id="hitMe">Buzz In</button>
+    </div>
+
     <div class="container">
       <p id="displayScore"></p>
       <p id="displayValue"></p>
@@ -46,10 +54,7 @@
 
     </div>
     <p id="playerName"></p>
-  <div class="center">
-    <button>Buzz In</button>
-  </div>
-  </div>
+    </div>
 
   <div id="timeOut"></div>
   </body>
