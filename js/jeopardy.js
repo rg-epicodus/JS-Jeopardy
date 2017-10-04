@@ -72,9 +72,10 @@ export let score = {
 
         $("#answer").click((e) => {
           e.preventDefault();
-          let stuff = $("#userResponse").val();
-          console.log(childData[col].chunky[row].answer.toLowerCase());
-          if (childData[col].chunky[row].answer.toLowerCase().includes(stuff.toLowerCase()) === true) {
+          let stuff = $("#userResponse").val().replace(/[^0-9<>a-z]/gi, '');
+          let newAnswer = childData[col].chunky[row].answer.replace(/[^0-9<>a-z]/gi, '');
+          console.log(newAnswer.toLowerCase());
+          if (newAnswer.toLowerCase().includes(stuff.toLowerCase()) === true) {
             console.log("correct");
           } else {
             console.log("nope");
