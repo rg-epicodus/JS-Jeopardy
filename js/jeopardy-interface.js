@@ -1,3 +1,4 @@
+
 import {Question} from './../js/jeopardy.js';
 import { score } from "./../js/jeopardy.js";
 // import { masterFirebaseConfig } from './api-keys';
@@ -16,15 +17,22 @@ $(document).ready(function() {
     e.preventDefault();
     let currentScore = 10;
     let questionValue = 20;
-    score.changeScore(currentScore, questionValue, displayScore);
+    // score.changeScore(currentScore, questionValue, displayScore);
     score.randomQuestions();
     score.retrieveQuestion();
     // score.getClues(displayClues);
   });
 
-// for(i=0 ; i <30 ; i++){
-//   var
-// }
+
+  $('#nukeIt').click(function() {
+    score.deleteDatabase();
+    // score.getClues(displayClues);
+  });
+
+
+
+
+
 
 
 
@@ -74,8 +82,5 @@ $(document).ready(function() {
   // })
 
 });
-// var box = document.getElementById("row1-0");
-// // box.onclick = alert("test");
-// box.addEventListener("click", function() {alert("test");} ,false);
 
 });

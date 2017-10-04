@@ -1,3 +1,12 @@
+
+export class Game {
+
+  constructor(player, category){
+      this.player = player;
+      this.category = category;
+  }
+}
+
 var firebase = require('firebase');
 // import { Config } from './api-keys';
 
@@ -14,21 +23,6 @@ firebase.initializeApp(config);
 
 
 
-// export class Question {
-//   constructor (question, answer, value, id, categoryId, categoryTitle) {
-//     this.question = question;
-//     this.answer = answer;
-//     this.value = value;
-//     this.id = id;
-//     this.categoryId = categoryId;
-//     this.categoryTitle = categoryTitle;
-//   }
-// }
-
-// function retrieveQuestion(elementId) {
-//   alert("test");
-//   alert(elementId);
-// }
 
 export let score = {
 
@@ -50,12 +44,13 @@ export let score = {
             fetch(`http://jservice.io/api/clues?category=${test[i].id}`)
                 .then((res) => {
                   res.json().then((chunky) => {
-                  firebase.database().ref().push({
-                     chunky
-                  });
 
-              // console.log(chunky[0]);
+                   firebase.database().ref().push({
+                     chunky
                     });
+
+
+                     });
 
                   });
                 });
@@ -79,6 +74,7 @@ export let score = {
       // alert("test");
       // alert(elementId);
 
+
       // return firebase.database().ref().once('value').then(function(snapshot){
       //
       //   console.log(snapshot.node_.children_.root_.key);
@@ -100,3 +96,37 @@ export let score = {
       // });
 
       }
+
+      let childData = [];
+      return firebase.database().ref().once('value').then(function(snapshot){
+        snapshot.forEach(function(childSnapshot){
+          childData.push(childSnapshot.val());
+        })
+
+        console.log(childData[0].chunky[0].question);
+        console.log(childData[0].chunky[0].value);
+        console.log(childData[0].chunky[0].answer);
+
+
+      })
+
+    },
+
+    deleteDatabase: function() {
+      console.log("DELETE");
+      console.log("DELETE");
+      console.log("DELETE");
+
+           firebase.database().ref().remove()
+               .then( () => {
+                   console.log('You have been Deleted!');
+               })
+               .catch( e => {
+                   console.log(e.message);
+               });
+    }
+
+
+
+      }
+    }
