@@ -95,6 +95,7 @@ input, #userResponse {
   display: block;
   margin: auto;
   margin-top: 50px;
+  font-size: 20px;
 }
 fullScreen{
   display:none;
