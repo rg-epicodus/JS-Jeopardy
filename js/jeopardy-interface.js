@@ -67,7 +67,7 @@ $(document).ready(function() {
     let thing = newRow + newCol;
 
     return ("<input id='userResponse'><button id='answer' type='click'>Submit Answer</button>")
-    
+
    };
 
    function exitTheClass(e){
@@ -83,10 +83,20 @@ $(document).ready(function() {
       e.preventDefault();
       let newAnswer = childData[col].chunky[row].answer.replace(/[^0-9<>a-z]/gi, '');
       let stuff = $("#userResponse").val().replace(/[^0-9<>a-z]/gi, '');
-        console.log(this)
+      let myAnswerClasses = document.getElementById(col + row);
       if(newAnswer.toLowerCase().includes(stuff.toLowerCase())=== true){
 
+        let div1 = document.createElement("div");
+        let wrapper = myAnswerClasses.parentNode;
+        wrapper.insertBefore(div1, myAnswerClasses);
+        myAnswerClasses.remove('fullScreen')
+
+
+
+
+        $(".rows").toggle();
         console.log("correct");
+
       }else {
         console.log("nope");
       }
@@ -99,8 +109,7 @@ $(document).ready(function() {
     $(".center").hide();
     $(".btn").hide();
     $("#nukeIt").hide();
-    $(".rows").hide();
-    // console.log(this)
+    $(".rows").toggle();
     $(this).show();
     $(this).addClass('fullScreen');
 });
