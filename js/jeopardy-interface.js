@@ -62,14 +62,13 @@ $(document).ready(function() {
   }
 
 
-  function addAnswer(row, col){
+  function addAnswer(row, col, setTimer){
     let newRow = row;
     let newCol = col;
     let thing = newRow + newCol;
 
 
-    return ("<input id='userResponse' required><button id='answer' type='click'>Submit Answer</button>")
-
+    return ("<input id='userResponse' required><button id='answer' type='click'>Submit Answer</button><p id='timeOut'></p>")
    };
 
    function exitTheClass(e){
@@ -89,15 +88,14 @@ $(document).ready(function() {
       if(newAnswer.toLowerCase().includes(stuff.toLowerCase())=== true){
 
         let div1 = document.createElement("div");
-
         div1.style.background = 'purple' ;
         div1.innerHTML = "Correct!"
         let wrapper = myAnswerClasses.parentNode;
         wrapper.insertBefore(div1, myAnswerClasses);
         myAnswerClasses.remove('fullScreen')
         $("#displayAnswer").html("Correct answer! " + newAnswer);
-
         $(".rows").toggle();
+
         $(".btn").show();
         //score
         var elId = parseInt(myAnswerClasses.id.split('')[0]) + 1;
@@ -105,10 +103,7 @@ $(document).ready(function() {
         var newScore = score.changeScore(elId);
         document.getElementById('score').innerHTML = newScore
 
-
-        console.log("correct");
-
-      }else {
+      } else {
         let div1 = document.createElement("div");
         div1.style.background = 'red' ;
         div1.innerHTML = "Incorrect!"
@@ -117,8 +112,10 @@ $(document).ready(function() {
         myAnswerClasses.remove('fullScreen')
         $("#displayAnswer").html("Wrong, the answer is: " + newAnswer);
         $(".rows").toggle();
+
         $(".btn").show();
         //score//score
+
         var elId = (parseInt(myAnswerClasses.id.split('')[0]) + 1) *(-1);
         var newScore = score.changeScore(elId);
         document.getElementById('score').innerHTML = newScore
