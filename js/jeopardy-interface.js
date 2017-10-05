@@ -1,34 +1,38 @@
-
-import {Question} from './../js/jeopardy.js';
 import { score } from "./../js/jeopardy.js";
-// import { masterFirebaseConfig } from './api-keys';
+import { config } from './../api-keys';
 
 $(document).ready(function() {
 
 
+  $(".wrapper").hide();
+  $("#nukeIt").hide();
+  $("#buzzIn,.center").hide();
+  $(".pull-right").hide();
+
   function displayScore(currentScore, questionValue) {
     $('#displayScore').html(`<p>Your current score is: ${currentScore}`);
     $('#displayValue').html(`<p>Your question value is: ${questionValue}`);
-
   }
 
   $('#newGame').click(function(e) {
     e.preventDefault();
-    // score.deleteDatabase();
     let currentScore = 10;
     let questionValue = 20;
-    // score.changeScore(currentScore, questionValue, displayScore);
-    score.randomQuestions();
-    score.populateCategories()
-  });
 
+    $(".jumbotron").hide();
+    $("#newGame").hide();
+    $("#nukeIt").show();
+    $(".pull-right").show();
+    $("#buzzIn,.center").show();
+    $(".wrapper").show();
+
+    score.randomQuestions();
+    score.populateCategories();
+  });
 
   $('#nukeIt').click(function() {
     score.deleteDatabase();
-    // score.getClues(displayClues);
   });
-
-
 
 
   for(let i=0 ; i < 6 ; i ++) {
@@ -50,18 +54,31 @@ $(document).ready(function() {
     $(".wrapper").append("<div class='rows' id='4" + i + "'>$1000</div>");
   }
 
+  //clear score
+  // function updateScore(){
+  //   $('#score').empty().text(score);
+  // }
+
+  function addAnswer(row, col){
+    let newRow = row;
+    let newCol = col;
+    let thing = newRow + newCol;
+     return ("<input id='userResponse'><button id='answer' type='click'>Submit Answer</button>")
+
+     $("#answer").click(function(e){
+       e.preventDefault();
+     });
+  }
 
   $(".rows").click(function(e) {
     e.preventDefault();
-    // e.stopImmediatePropagation();
-    let squareName = e.target.id;
-    score.retrieveQuestion(e.target.id);
+    score.retrieveQuestion(e.target.id, addAnswer);
+    $(".center").hide();
     $(".btn").hide();
+    $("#nukeIt").hide();
     $(".rows").hide();
     $(this).show();
     $(this).addClass('fullScreen');
-    // $(this).text("<input id='userResponse'><button id='answer' onclick='this.evaluateAnswer(userResponse.innerHTML)'>Submit Answer</button>");
-
 
 });
 
