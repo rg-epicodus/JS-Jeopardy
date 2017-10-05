@@ -90,8 +90,15 @@ $(document).ready(function() {
         let wrapper = myAnswerClasses.parentNode;
         wrapper.insertBefore(div1, myAnswerClasses);
         myAnswerClasses.remove('fullScreen')
-
         $(".rows").toggle();
+        //score
+        var elId = parseInt(myAnswerClasses.id.split('')[0]) + 1;
+        console.log(elId)
+        var newScore = score.changeScore(elId);
+        console.log(newScore)
+        document.getElementById('score').innerHTML = newScore
+
+
         console.log("correct");
 
       }else {
@@ -102,6 +109,10 @@ $(document).ready(function() {
         wrapper.insertBefore(div1, myAnswerClasses);
         myAnswerClasses.remove('fullScreen')
         $(".rows").toggle();
+        //score//score
+        var elId = (parseInt(myAnswerClasses.id.split('')[0]) + 1) *(-1);
+        var newScore = score.changeScore(elId);
+        document.getElementById('score').innerHTML = newScore
         console.log("nope");
       }
     });

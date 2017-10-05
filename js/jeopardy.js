@@ -6,6 +6,8 @@ firebase.initializeApp(config);
 
 
 export let score = {
+  playerScore: 0,
+
   randomQuestions: function(displayJson) {
     let min = Math.ceil(1);
     let max = Math.floor(18415);
@@ -68,8 +70,7 @@ export let score = {
              console.log(e.message);
          });
     },
-    changeScore: function(currentScore, questionValue, displayScore) {
-          let num1 = currentScore;
-          let num2 = questionValue;
+    changeScore: function(elId) {
+          return this.playerScore += elId*200;
     }
 }
