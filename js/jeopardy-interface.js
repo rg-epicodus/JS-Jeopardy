@@ -8,13 +8,20 @@ $(document).ready(function() {
   $("#nukeIt").hide();
   $("#buzzIn,.center").hide();
   $(".pull-right").hide();
+  $("#start").hide();
 
 
   function displayScore(currentScore, questionValue) {
     $('#displayScore').html(`<p>Your current score is: ${currentScore}`);
     $('#displayValue').html(`<p>Your question value is: ${questionValue}`);
   }
-
+  $('#start').click(function(e){
+    e.preventDefault();
+    score.populateCategories();
+    $("#start").hide();
+    $("#nukeIt").show();
+    $(".pull-right").show();
+  });
   $('#newGame').click(function(e) {
     e.preventDefault();
 
@@ -26,14 +33,12 @@ $(document).ready(function() {
     trebec.play();
     $(".jumbotron").hide();
     $("#newGame").hide();
-    $("#nukeIt").show();
-    $(".pull-right").show();
+
     $("#buzzIn,.center").show();
     $(".wrapper").show();
-
+    $("#start").show();
 
     score.randomQuestions();
-    score.populateCategories();
   });
 
   $('#nukeIt').click(function() {
@@ -61,14 +66,13 @@ $(document).ready(function() {
   }
 
 
-  function addAnswer(row, col){
+  function addAnswer(row, col, setTimer){
     let newRow = row;
     let newCol = col;
     let thing = newRow + newCol;
 
 
-    return ("<input id='userResponse'><button id='answer' type='click'>Submit Answer</button>")
-
+    return ("<input id='userResponse' required><button id='answer' type='click'>Submit Answer</button><p id='timeOut'></p>")
    };
 
    function exitTheClass(e){
@@ -91,22 +95,22 @@ $(document).ready(function() {
         song.pause();
 
         let div1 = document.createElement("div");
-
         div1.style.background = 'purple' ;
         div1.innerHTML = "Correct!"
         let wrapper = myAnswerClasses.parentNode;
         wrapper.insertBefore(div1, myAnswerClasses);
         myAnswerClasses.remove('fullScreen')
+        $("#displayAnswer").html("Correct answer! " + newAnswer);
         $(".rows").toggle();
+
+        $(".btn").show();
         //score
         var elId = parseInt(myAnswerClasses.id.split('')[0]) + 1;
-        console.log(elId)
+
         var newScore = score.changeScore(elId);
-        console.log(newScore)
         document.getElementById('score').innerHTML = newScore
 
 
-        console.log("correct");
 
       } else {
         var correct = new Audio('../resources/correct.mp3');
@@ -117,12 +121,16 @@ $(document).ready(function() {
         let wrapper = myAnswerClasses.parentNode;
         wrapper.insertBefore(div1, myAnswerClasses);
         myAnswerClasses.remove('fullScreen')
+        $("#displayAnswer").html("Wrong, the answer is: " + newAnswer);
         $(".rows").toggle();
+
+        $(".btn").show();
         //score//score
+
         var elId = (parseInt(myAnswerClasses.id.split('')[0]) + 1) *(-1);
         var newScore = score.changeScore(elId);
         document.getElementById('score').innerHTML = newScore
-        console.log("nope");
+
       }
     });
 

@@ -11,7 +11,10 @@
   /*background-repeat: no-repeat;*/
   background-size:auto;
 }
-
+h3 {
+  font-size: 30px;
+  margin-right: 50px;
+}
 .jumbotron{
   text-align: center;
   font-family: monospace;
@@ -81,7 +84,7 @@ button, .center, #nukeIt {
   position: fixed;
   top: 0;
   left: 0;
-  font-size: 4vw;
+  font-size: 3vw;
 }
 input, #userResponse {
   pointer-events: all;
@@ -89,19 +92,31 @@ input, #userResponse {
 
   display: block;
   margin: auto;
-  margin-top: 30%;
+  margin-top: 20%;
 }
 #answer{
   pointer-events: all;
   display: block;
   margin: auto;
   margin-top: 50px;
+  font-size: 20px;
 }
 fullScreen{
   display:none;
 }
-#createdDiv{
-  background-color: purple;
+#start{
+  margin-top: 20px;
+  background-color: #101363;
+  color: white;
+  margin-left: 200px;
+  border: 2px solid white;
+  border-radius: 10px;
+}
+#displayAnswer{
+  font-size: 30px;
+}
+#nukeIt{
+  margin-top: 300px;
 }
 .score{
   background-color: red;

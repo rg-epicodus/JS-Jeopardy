@@ -39,6 +39,7 @@ export let score = {
         })
 
         document.getElementById(elementId).innerHTML = moveToFrontEnd(childData, col, row) + addAnswer(col, row);
+        this.setTimer();
         submit(childData, row, col)
 
       })
@@ -72,5 +73,21 @@ export let score = {
     },
     changeScore: function(elId) {
           return this.playerScore += elId*200;
-    }
+    },
+
+    setTimer: function(addAnswer) {
+     let timeLeft = 16;
+     let time = setInterval(function(){
+       timeLeft--;
+       if(timeLeft < 10){
+         timeLeft = "0" + timeLeft;
+       }
+       document.getElementById("timeOut").innerHTML="00:" + timeLeft;      console.log(timeLeft);
+       if(timeLeft <=0){
+         clearInterval(time);
+         document.getElementById("timeOut").innerHTML="<p>Doh, out of time! </p>";
+
+       }
+     }, 1000);
+   }
 }

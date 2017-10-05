@@ -81,7 +81,9 @@ $ gulp serve
 
 | Behavior      | Example Input         | Example Output        |
 | ------------- | ------------- | ------------- |
-|  |  |  |
+| The project will pull questions/answers/categories from an API  | Though those candy may be crushed, our holiday spirits are not | CandyCanes |
+| The user will be able to input the answer to a question | Though those candy may be crushed, our holiday spirits are not | CandyCanes |
+| The application will keep track of the users score | Score: 0 | Score: 200 |
 
 ## Known Bugs
 
