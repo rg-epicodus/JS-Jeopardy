@@ -36,28 +36,39 @@ export let score = {
         snapshot.forEach((childSnapshot) => {
           childData.push(childSnapshot.val());
         })
-      document.getElementById(elementId).innerHTML = childData[col].chunky[row].question + addAnswer(row, col) ;
 
-      $("#answer").click((e) => {
-        e.preventDefault();
-        let newAnswer = childData[col].chunky[row].answer.replace(/[^0-9<>a-z]/gi, '');
-        let stuff = $("#userResponse").val().replace(/[^0-9<>a-z]/gi, '');
 
-        if (newAnswer.toLowerCase().includes(stuff.toLowerCase()) === true) {
-          console.log("correct");
-        } else {
-          console.log("nope");
-        }
+        document.getElementById(elementId).innerHTML = childData[col].chunky[row].question + "<input id='userResponse'><button id='answer' type='submit'>Submit Answer</button>" ;
+
+        $("#answer").click((e) => {
+          e.preventDefault();
+          let stuff = $("#userResponse").val().replace(/[^0-9<>a-z]/gi, '');
+          let newAnswer = childData[col].chunky[row].answer.replace(/[^0-9<>a-z]/gi, '');
+
+
+          if (newAnswer.toLowerCase().includes(stuff.toLowerCase()) === true) {
+            e.originalEvent.path[1].remove('fullScreen');
+            // console.log(e.path.classList[1].remove());
+            console.log("correct");
+          } else {
+            console.log("nope");
+          }
+        })
+
+
+
       })
 
       })
     },
+
     populateCategories: function() {
       let childData = [];
       return firebase.database().ref().once('value').then(function(snapshot){
         snapshot.forEach(function(childSnapshot){
           childData.push(childSnapshot.val());
         })
+
       console.log(childData[0].chunky[0].category.title)
       document.getElementById('cat0').innerHTML = childData[0].chunky[0].category.title;
       document.getElementById('cat1').innerHTML = childData[1].chunky[0].category.title;
@@ -66,6 +77,7 @@ export let score = {
       document.getElementById('cat4').innerHTML = childData[4].chunky[0].category.title;
       document.getElementById('cat5').innerHTML = childData[5].chunky[0].category.title;
     })
+
     },
 
     deleteDatabase: function() {
