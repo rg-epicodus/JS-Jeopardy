@@ -54,11 +54,6 @@ export let score = {
             console.log("nope");
           }
         })
-
-
-
-      })
-
       })
     },
 
@@ -89,8 +84,24 @@ export let score = {
              console.log(e.message);
          });
     },
+
     changeScore: function(currentScore, questionValue, displayScore) {
           let num1 = currentScore;
           let num2 = questionValue;
-    }
-}
+    },
+
+    setTimer: function() {
+     let timeLeft = 16;
+     let time = setInterval(function(){
+       timeLeft--;
+       if(timeLeft < 10){
+         timeLeft = "0" + timeLeft;
+       }
+       document.getElementById("timeOut").innerHTML="00:" + timeLeft;      console.log(timeLeft);
+       if(timeLeft <=0){
+         clearInterval(time);
+         document.getElementById("timeOut").innerHTML="<p>Doh, out of time! </p>";
+       }
+     }, 1000);
+   }
+};

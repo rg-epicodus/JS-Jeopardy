@@ -81,5 +81,9 @@ $(document).ready(function() {
     $(this).addClass('fullScreen');
 
 });
+$(document).keydown(function(e){
+  if(e.keyCode === 17)
+  score.setTimer();
+})
 
 });
