@@ -24,6 +24,7 @@
   font-weight: bold;
 }
 h4{
+  border-top: black;
   color: blue;
   /*color: #ff0;*/
   text-align: center;
@@ -101,4 +102,12 @@ fullScreen{
 }
 #createdDiv{
   background-color: purple;
+}
+.score{
+  background-color: red;
+}
+body{
+  background-image: url("../resources/background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }

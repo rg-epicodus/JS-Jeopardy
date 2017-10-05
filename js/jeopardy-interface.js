@@ -17,9 +17,13 @@ $(document).ready(function() {
 
   $('#newGame').click(function(e) {
     e.preventDefault();
-    let currentScore = 10;
-    let questionValue = 20;
 
+    // let currentScore = 10;
+    // let questionValue = 20;
+    // let player1 = score;
+    // let player2 = score;
+    var trebec = new Audio('../resources/trebec.mp3');
+    trebec.play();
     $(".jumbotron").hide();
     $("#newGame").hide();
     $("#nukeIt").show();
@@ -82,6 +86,9 @@ $(document).ready(function() {
       let stuff = $("#userResponse").val().replace(/[^0-9<>a-z]/gi, '');
       let myAnswerClasses = document.getElementById(row + col);
       if(newAnswer.toLowerCase().includes(stuff.toLowerCase())=== true){
+        var correct = new Audio('../resources/correct.mp3');
+        correct.play();
+        song.pause();
 
         let div1 = document.createElement("div");
 
@@ -101,7 +108,9 @@ $(document).ready(function() {
 
         console.log("correct");
 
-      }else {
+      } else {
+        var correct = new Audio('../resources/correct.mp3');
+        correct.play();
         let div1 = document.createElement("div");
         div1.style.background = 'red' ;
         div1.innerHTML = "Incorrect!"
@@ -121,6 +130,8 @@ $(document).ready(function() {
 
   $(".rows").click(function(e) {
     e.preventDefault();
+    var song = new Audio('../resources/song.mp3');
+    song.play();
     score.retrieveQuestion(e.target.id, addAnswer, exitTheClass, moveToFrontEnd, submit);
     $(".center").hide();
     $(".btn").hide();
