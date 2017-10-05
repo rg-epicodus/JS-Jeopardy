@@ -66,24 +66,57 @@ $(document).ready(function() {
     let newRow = row;
     let newCol = col;
     let thing = newRow + newCol;
-     return ("<input id='userResponse'><button id='answer' type='click'>Submit Answer</button>")
 
-     $("#answer").click(function(e){
-       e.preventDefault();
 
-     });
+    return ("<input id='userResponse'><button id='answer' type='click'>Submit Answer</button>")
+
+   };
+
+   function exitTheClass(e){
+     $(".rows").show();
+  };
+
+  function moveToFrontEnd(childData, row, col){
+    return childData[col].chunky[row].question;
+  };
+
+  function submit(childData, col, row){
+    $("#answer").click((e)=>{
+      e.preventDefault();
+      let newAnswer = childData[col].chunky[row].answer.replace(/[^0-9<>a-z]/gi, '');
+      let stuff = $("#userResponse").val().replace(/[^0-9<>a-z]/gi, '');
+      let myAnswerClasses = document.getElementById(col + row);
+      if(newAnswer.toLowerCase().includes(stuff.toLowerCase())=== true){
+
+        let div1 = document.createElement("div");
+        let wrapper = myAnswerClasses.parentNode;
+        wrapper.insertBefore(div1, myAnswerClasses);
+        myAnswerClasses.remove('fullScreen')
+
+
+
+
+        $(".rows").toggle();
+        console.log("correct");
+
+      }else {
+        console.log("nope");
+      }
+    });
+
   }
 
   $(".rows").click(function(e) {
     e.preventDefault();
-    score.retrieveQuestion(e.target.id, addAnswer);
+    score.retrieveQuestion(e.target.id, addAnswer, exitTheClass, moveToFrontEnd, submit);
     $(".center").hide();
     $(".btn").hide();
     $("#nukeIt").hide();
-    // $(".rows").hide();
+
+    $(".rows").toggle();
+
     $(this).show();
     $(this).addClass('fullScreen');
-
 });
 
 });

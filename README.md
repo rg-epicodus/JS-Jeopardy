@@ -91,7 +91,7 @@ $ gulp serve
 * "Rich Garrick" <richg341@gmail.com>
 * "Trevor Gill" <trevor.gill@gmail.com>
 * "Shyamal Punekar" <shyamal.Punekar@gmail.com>
-* "Kimberly Champ"
+* "Kimberly Lu" <kimlu4@comcast.net>
 
 ## Contributing
 

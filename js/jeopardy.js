@@ -26,43 +26,20 @@ export let score = {
           });
         },
 
-    retrieveQuestion: function(elementId,addAnswer) {
+    retrieveQuestion: function(elementId, addAnswer, exitTheClass, moveToFrontEnd, submit) {
       let coorArray=elementId.split('');
       let row = coorArray[0];
       let col = coorArray[1];
       let childData = [];
-      addAnswer(col, row)
       return firebase.database().ref().once('value').then((snapshot) => {
         snapshot.forEach((childSnapshot) => {
           childData.push(childSnapshot.val());
         })
 
-
-        document.getElementById(elementId).innerHTML = childData[col].chunky[row].question + "<input id='userResponse'><button id='answer' type='submit'>Submit Answer</button>" ;
-
-        $("#answer").click((e) => {
-          e.preventDefault();
-          let stuff = $("#userResponse").val().replace(/[^0-9<>a-z]/gi, '');
-          let newAnswer = childData[col].chunky[row].answer.replace(/[^0-9<>a-z]/gi, '');
-          console.log(newAnswer);
-          let myAnswerClasses = document.getElementById(row + col);
-
-          if (newAnswer.toLowerCase().includes(stuff.toLowerCase()) === true) {
-            console.log("correct");
-            console.log(myAnswerClasses);
-            myAnswerClasses.remove('fullscreen');
-            $(".rows").show();
-
-          } else {
-            console.log("nope");
-          }
-        })
-
-
+        document.getElementById(elementId).innerHTML = moveToFrontEnd(childData, col, row) + addAnswer(col, row);
+        submit(childData, row, col)
 
       })
-
-
     },
 
     populateCategories: function() {
@@ -82,7 +59,6 @@ export let score = {
     })
 
     },
-
     deleteDatabase: function() {
      firebase.database().ref().remove()
          .then( () => {
