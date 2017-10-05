@@ -26,7 +26,7 @@ export let score = {
           });
         },
 
-    retrieveQuestion: function(elementId, addAnswer, exitTheClass, moveToFrontEnd) {
+    retrieveQuestion: function(elementId, addAnswer, exitTheClass, moveToFrontEnd, submit) {
       let coorArray=elementId.split('');
       let row = coorArray[0];
       let col = coorArray[1];
@@ -35,22 +35,8 @@ export let score = {
         snapshot.forEach((childSnapshot) => {
           childData.push(childSnapshot.val());
         })
-
-        document.getElementById(elementId).innerHTML = moveToFrontEnd(childData, col, row) + addAnswer(col, row) ;
-
-        $("#answer").click((e) => {
-          e.preventDefault();
-          let newAnswer = childData[col].chunky[row].answer.replace(/[^0-9<>a-z]/gi, '');
-          let stuff = $("#userResponse").val().replace(/[^0-9<>a-z]/gi, '');
-          if (newAnswer.toLowerCase().includes(stuff.toLowerCase()) === true) {
-
-            exitTheClass(e)
-
-            console.log("correct");
-          } else {
-            console.log("nope");
-          }
-        })
+        document.getElementById(elementId).innerHTML = moveToFrontEnd(childData, col, row) + addAnswer(col, row, childData);
+        submit(childData, row, col)
       })
     },
 

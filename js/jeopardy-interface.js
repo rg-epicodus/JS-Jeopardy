@@ -61,25 +61,42 @@ $(document).ready(function() {
   //   $('#score').empty().text(score);
   // }
 
-  function addAnswer(row, col){
+  function addAnswer(row, col, childData){
     let newRow = row;
     let newCol = col;
     let thing = newRow + newCol;
-     return ("<input id='userResponse'><button id='answer' type='click'>Submit Answer</button>")
+
+    return ("<input id='userResponse'><button id='answer' type='click'>Submit Answer</button>")
+    // .then(submit(childData, col, row))
+
+
+
    };
 
    function exitTheClass(e){
      $(".rows").show();
-     console.log(e.originalEvent.path[1].remove('fullScreen'))
   };
 
   function moveToFrontEnd(childData, row, col){
-        return childData[col].chunky[row].question;
+    return childData[col].chunky[row].question;
   };
+
+  function submit(childData, col, row){
+    $("#answer").click((e)=>{
+      e.preventDefault();
+      let newAnswer = childData[col].chunky[row].answer.replace(/[^0-9<>a-z]/gi, '');
+      let stuff = $("#userResponse").val().replace(/[^0-9<>a-z]/gi, '');
+      if(newAnswer.toLowerCase().includes(stuff.toLowerCase())=== true){
+        console.log("correct");
+      }else {
+        console.log("nope");
+      }
+    });
+  }
 
   $(".rows").click(function(e) {
     e.preventDefault();
-    score.retrieveQuestion(e.target.id, addAnswer, exitTheClass, moveToFrontEnd);
+    score.retrieveQuestion(e.target.id, addAnswer, exitTheClass, moveToFrontEnd, submit);
     $(".center").hide();
     $(".btn").hide();
     $("#nukeIt").hide();
