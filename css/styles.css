@@ -11,7 +11,10 @@
   /*background-repeat: no-repeat;*/
   background-size:auto;
 }
-
+h3 {
+  font-size: 30px;
+  margin-right: 50px;
+}
 .jumbotron{
   text-align: center;
   font-family: monospace;
@@ -99,6 +102,17 @@ input, #userResponse {
 fullScreen{
   display:none;
 }
-#createdDiv{
-  background-color: purple;
+#start{
+  margin-top: 20px;
+  background-color: #101363;
+  color: white;
+  margin-left: 200px;
+  border: 2px solid white;
+  border-radius: 10px;
+}
+#displayAnswer{
+  font-size: 20px;
+}
+#nukeIt{
+  margin-top: 300px;
 }

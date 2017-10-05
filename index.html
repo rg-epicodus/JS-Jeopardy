@@ -26,25 +26,27 @@
     <div class="wrapper"></div>
     <div class="container">
       <button id="newGame" type="submit" class="btn">Go</button>
-      <div class="center">
-        <button class="center" id="buzzIn">Buzz In</button>
-      </div>
     </div>
+
+
+    <button class="btn" id="start">Start Game!</button>
     <!--display score  -->
     <div id="panel-footer">
-		<div class="pull-right"><h4>Score: <span id="score">0</span></h4></div>
+		<div class="pull-right"><h3>Score: <span id="score">0</span></h3></div>
 		<div class="clearfix"></div>
     </div>
 
     <div class="container">
+      
       <p id="displayScore"></p>
       <p id="displayValue"></p>
       <p id="displayAnswer"></p>
+
     </div>
     <p id="playerName"></p>
 
   <div>
-    <button  type="button" id="nukeIt">Nuke it</button>
+    <button onclick="window.location.reload()"  type="button"  id="nukeIt">Start Over!</button>
   </div>
 
   <div id="timeOut"></div>
