@@ -98,11 +98,11 @@ $(document).ready(function() {
         $("#displayAnswer").html("Correct answer! " + newAnswer);
 
         $(".rows").toggle();
+        $(".btn").show();
         //score
         var elId = parseInt(myAnswerClasses.id.split('')[0]) + 1;
-        console.log(elId)
+
         var newScore = score.changeScore(elId);
-        console.log(newScore)
         document.getElementById('score').innerHTML = newScore
 
 
@@ -117,6 +117,7 @@ $(document).ready(function() {
         myAnswerClasses.remove('fullScreen')
         $("#displayAnswer").html("Wrong, the answer is: " + newAnswer);
         $(".rows").toggle();
+        $(".btn").show();
         //score//score
         var elId = (parseInt(myAnswerClasses.id.split('')[0]) + 1) *(-1);
         var newScore = score.changeScore(elId);

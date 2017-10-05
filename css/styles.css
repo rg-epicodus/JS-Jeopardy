@@ -83,7 +83,7 @@ button, .center, #nukeIt {
   position: fixed;
   top: 0;
   left: 0;
-  font-size: 4vw;
+  font-size: 3vw;
 }
 input, #userResponse {
   pointer-events: all;
@@ -91,13 +91,14 @@ input, #userResponse {
 
   display: block;
   margin: auto;
-  margin-top: 30%;
+  margin-top: 20%;
 }
 #answer{
   pointer-events: all;
   display: block;
   margin: auto;
   margin-top: 50px;
+  font-size: 20px;
 }
 fullScreen{
   display:none;
@@ -111,7 +112,7 @@ fullScreen{
   border-radius: 10px;
 }
 #displayAnswer{
-  font-size: 20px;
+  font-size: 30px;
 }
 #nukeIt{
   margin-top: 300px;
