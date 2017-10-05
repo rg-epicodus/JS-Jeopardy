@@ -1,5 +1,3 @@
-
-
 # JS Team Project - Jeopardy Web Application
 
   Jeopardy Web Application. This is a project to recreate the game show 'Jeopardy' in Javascript.  Please let us know if you have any hints or ideas for addition via the [Contributing](#contributing) area below.  Thank you.
@@ -32,11 +30,51 @@ Table of contents
 
 ## Installation
 
-Clone project
-npm install
-bower install
-gulp build
-gulp serve
+* Clone the repo from git hub using:
+````
+$ git clone https://github.com/rg-epicodus/JS-Jeopardy.git
+````
+* Open the project in your favorite editor, this was created in Atom.
+* Experiment!
+
+_To use this project you will need the following installed properly on your computer._
+* [Node.js](https://nodejs.org/en/)
+* Once installed, you will need to install gulp and bower:
+
+````
+$ npm install gulp
+$ npm install Bower
+````
+
+_This API doesn't require an API key, but to find the documentation on how it works visit [jService](http://jservice.io/)_
+
+* To store the data, including questions and answers, you will need to create a FireBase account and project. [FireBase](https://firebase.google.com/)
+* Copy your the 'key' that is provided into a file that you create in the project called .env.
+* In this file write:
+````
+ var config = {
+    apiKey: "xxxx",
+    authDomain: "xxxx.firebaseapp.com",
+    databaseURL: "https://xxxx.firebaseio.com",
+    projectId: "xxxx",
+    storageBucket: "xxxx.appspot.com",
+    messagingSenderId: "xxxx"
+  };
+
+````
+* Add to the .js file that will be used.
+````
+firebase.initializeApp(config);
+````
+* Make sure to rebuild the file after making any changes to the js files, using:
+````
+$ gulp build
+````
+ or by using:
+````
+$ gulp serve
+````
+* Open in your favorite browser, if you just use gulp build, otherwise it will be launched by gulp serve.
 
 
 ## Specifications
@@ -51,8 +89,8 @@ gulp serve
 
 * "Stephanie Mayer" <smayer0926@gmail.com>
 * "Rich Garrick" <richg341@gmail.com>
-* "Trevor Gill"
-* "Shyamal Punekar"
+* "Trevor Gill" <trevor.gill@gmail.com>
+* "Shyamal Punekar" <shyamal.Punekar@gmail.com>
 * "Kimberly Champ"
 
 ## Contributing
