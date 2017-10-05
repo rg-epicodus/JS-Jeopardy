@@ -63,7 +63,7 @@ $(document).ready(function() {
     let thing = newRow + newCol;
 
 
-    return ("<input id='userResponse'><button id='answer' type='click'>Submit Answer</button>")
+    return ("<input id='userResponse' required><button id='answer' type='click'>Submit Answer</button>")
 
    };
 
@@ -90,6 +90,8 @@ $(document).ready(function() {
         let wrapper = myAnswerClasses.parentNode;
         wrapper.insertBefore(div1, myAnswerClasses);
         myAnswerClasses.remove('fullScreen')
+        $("#displayAnswer").html("Correct answer! " + newAnswer);
+
         $(".rows").toggle();
         //score
         var elId = parseInt(myAnswerClasses.id.split('')[0]) + 1;
@@ -108,12 +110,13 @@ $(document).ready(function() {
         let wrapper = myAnswerClasses.parentNode;
         wrapper.insertBefore(div1, myAnswerClasses);
         myAnswerClasses.remove('fullScreen')
+        $("#displayAnswer").html("Wrong, the answer is: " + newAnswer);
         $(".rows").toggle();
         //score//score
         var elId = (parseInt(myAnswerClasses.id.split('')[0]) + 1) *(-1);
         var newScore = score.changeScore(elId);
         document.getElementById('score').innerHTML = newScore
-        console.log("nope");
+
       }
     });
 
