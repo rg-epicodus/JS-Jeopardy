@@ -44,12 +44,15 @@ export let score = {
           e.preventDefault();
           let stuff = $("#userResponse").val().replace(/[^0-9<>a-z]/gi, '');
           let newAnswer = childData[col].chunky[row].answer.replace(/[^0-9<>a-z]/gi, '');
-
+          console.log(newAnswer);
+          let myAnswerClasses = document.getElementById(row + col);
 
           if (newAnswer.toLowerCase().includes(stuff.toLowerCase()) === true) {
-            e.originalEvent.path[1].remove('fullScreen');
-            // console.log(e.path.classList[1].remove());
             console.log("correct");
+            console.log(myAnswerClasses);
+            myAnswerClasses.remove('fullscreen');
+            $(".rows").show();
+
           } else {
             console.log("nope");
           }

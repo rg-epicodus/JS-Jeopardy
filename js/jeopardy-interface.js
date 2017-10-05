@@ -8,7 +8,7 @@ $(document).ready(function() {
   $("#nukeIt").hide();
   $("#buzzIn,.center").hide();
   $(".pull-right").hide();
-  
+
 
   function displayScore(currentScore, questionValue) {
     $('#displayScore').html(`<p>Your current score is: ${currentScore}`);
@@ -62,6 +62,7 @@ $(document).ready(function() {
   // }
 
   function addAnswer(row, col){
+    console.log("in outside addAnswer");
     let newRow = row;
     let newCol = col;
     let thing = newRow + newCol;
@@ -69,6 +70,7 @@ $(document).ready(function() {
 
      $("#answer").click(function(e){
        e.preventDefault();
+
      });
   }
 
@@ -78,7 +80,7 @@ $(document).ready(function() {
     $(".center").hide();
     $(".btn").hide();
     $("#nukeIt").hide();
-    $(".rows").hide();
+    // $(".rows").hide();
     $(this).show();
     $(this).addClass('fullScreen');
 
