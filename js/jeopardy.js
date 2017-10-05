@@ -26,40 +26,32 @@ export let score = {
           });
         },
 
-    retrieveQuestion: function(elementId,addAnswer) {
+    retrieveQuestion: function(elementId, addAnswer, exitTheClass) {
       let coorArray=elementId.split('');
       let row = coorArray[0];
       let col = coorArray[1];
       let childData = [];
-      addAnswer(col, row)
       return firebase.database().ref().once('value').then((snapshot) => {
         snapshot.forEach((childSnapshot) => {
           childData.push(childSnapshot.val());
         })
 
-
-        document.getElementById(elementId).innerHTML = childData[col].chunky[row].question + "<input id='userResponse'><button id='answer' type='submit'>Submit Answer</button>" ;
+        document.getElementById(elementId).innerHTML = childData[col].chunky[row].question + addAnswer(col, row) ;
 
         $("#answer").click((e) => {
           e.preventDefault();
-          let stuff = $("#userResponse").val().replace(/[^0-9<>a-z]/gi, '');
           let newAnswer = childData[col].chunky[row].answer.replace(/[^0-9<>a-z]/gi, '');
-
-
+          let stuff = $("#userResponse").val().replace(/[^0-9<>a-z]/gi, '');
           if (newAnswer.toLowerCase().includes(stuff.toLowerCase()) === true) {
-            e.originalEvent.path[1].remove('fullScreen');
-            // console.log(e.path.classList[1].remove());
+
+            exitTheClass(e)
+
             console.log("correct");
           } else {
             console.log("nope");
           }
         })
-
-
-
       })
-
-
     },
 
     populateCategories: function() {
@@ -79,7 +71,6 @@ export let score = {
     })
 
     },
-
     deleteDatabase: function() {
      firebase.database().ref().remove()
          .then( () => {

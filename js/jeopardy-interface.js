@@ -8,7 +8,7 @@ $(document).ready(function() {
   $("#nukeIt").hide();
   $("#buzzIn,.center").hide();
   $(".pull-right").hide();
-  
+
 
   function displayScore(currentScore, questionValue) {
     $('#displayScore').html(`<p>Your current score is: ${currentScore}`);
@@ -66,22 +66,30 @@ $(document).ready(function() {
     let newCol = col;
     let thing = newRow + newCol;
      return ("<input id='userResponse'><button id='answer' type='click'>Submit Answer</button>")
+   };
 
-     $("#answer").click(function(e){
-       e.preventDefault();
-     });
-  }
+   function exitTheClass(e){
+     $(".rows").show();
+     console.log(e.originalEvent.path[1].remove('fullScreen'))
+    //  let newRow = row;
+    //  let newCol = col;
+    //  let thing = newRow + newCol;
+    //  console.log('div' + "#" + thing + "." + "rows")
+    //  $('div' + "#" + thing + ".rows").removeClass('fullScreen');
+    //  console.log($(".rows"))
+
+
+   };
 
   $(".rows").click(function(e) {
     e.preventDefault();
-    score.retrieveQuestion(e.target.id, addAnswer);
+    score.retrieveQuestion(e.target.id, addAnswer, exitTheClass);
     $(".center").hide();
     $(".btn").hide();
     $("#nukeIt").hide();
     $(".rows").hide();
     $(this).show();
     $(this).addClass('fullScreen');
-
 });
 
 });
