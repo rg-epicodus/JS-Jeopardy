@@ -59,7 +59,7 @@ export let score = {
 
       })
 
-      })
+
     },
 
     populateCategories: function() {
@@ -69,7 +69,7 @@ export let score = {
           childData.push(childSnapshot.val());
         })
 
-      console.log(childData[0].chunky[0].category.title)
+
       document.getElementById('cat0').innerHTML = childData[0].chunky[0].category.title;
       document.getElementById('cat1').innerHTML = childData[1].chunky[0].category.title;
       document.getElementById('cat2').innerHTML = childData[2].chunky[0].category.title;

@@ -8,6 +8,7 @@ $(document).ready(function() {
   $("#nukeIt").hide();
   $("#buzzIn,.center").hide();
   $(".pull-right").hide();
+  
 
   function displayScore(currentScore, questionValue) {
     $('#displayScore').html(`<p>Your current score is: ${currentScore}`);
@@ -25,6 +26,7 @@ $(document).ready(function() {
     $(".pull-right").show();
     $("#buzzIn,.center").show();
     $(".wrapper").show();
+
 
     score.randomQuestions();
     score.populateCategories();

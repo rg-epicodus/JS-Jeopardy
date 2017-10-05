@@ -1,18 +1,27 @@
 * {
   box-sizing: border-box;
 }
-
-.wrapper {
-  max-width: 95%;
-  margin: 0 auto;
+/*html {
+  position: relative;
+  min-height: 100%;
+}*/
+.background {
+  /*background: url('../img/.jpeg');*/
+  background-color: red;
+  /*background-repeat: no-repeat;*/
+  background-size:auto;
 }
 
-body{
-  /*background: linear-gradient(90deg, #0000CC, #000066);*/
+.jumbotron{
+  text-align: center;
+  font-family: monospace;
+  font-weight: bold;
+  background-color: blue;
 }
 .welcome-page{
-  color: blue;
+  color: white;
   text-align: center;
+  font-weight: bold;
 }
 h4{
   color: blue;
@@ -33,6 +42,11 @@ h4{
   margin-left: 200px;
   margin:auto;
   display: block;
+  background-color: blue;
+  color: white;
+  margin-bottom: 100px;
+  margin-top: 100px;
+  font-weight: bold;
 }
 .wrapper {
   display: grid;
@@ -40,9 +54,9 @@ h4{
   grid-gap: 0px;
   grid-auto-rows: minmax(100px, auto);
   margin-bottom: 50px;
+  max-width: 95%;
+  margin: 0 auto;
 }
-
-
 button, .center, #nukeIt {
   margin: auto;
   width:120px;
@@ -51,18 +65,13 @@ button, .center, #nukeIt {
   border: 1px solid red;
   background-image: radial-gradient(farthest-corner at 50px 50px , #FF9033 0%, #f44641 60%, #FF0000 95%);
   display: block;
-  /*background-image: radial-gradient(farthest-corner at 45px 45px , #FF9033 0%, #FF0000 100%);*/
 }
-
 #timeOut {
   color: red;
   text-align: center;
   margin-top: 20px;
   font-size: 20px;
 }
-
-#intro {color: #ff0; width: 0px; height: 2em; white-space: nowrap; overflow:visible; margin: center }
-
 .rows.fullScreen {
   pointer-events: none;
   z-index: 9999;
@@ -86,10 +95,4 @@ input, #userResponse {
   display: block;
   margin: auto;
   margin-top: 50px;
-}
-
-#newGame{
-  margin-bottom: 100px;
-  margin-top: 100px;
-  color: blue;
 }
