@@ -8,13 +8,20 @@ $(document).ready(function() {
   $("#nukeIt").hide();
   $("#buzzIn,.center").hide();
   $(".pull-right").hide();
+  $("#start").hide();
 
 
   function displayScore(currentScore, questionValue) {
     $('#displayScore').html(`<p>Your current score is: ${currentScore}`);
     $('#displayValue').html(`<p>Your question value is: ${questionValue}`);
   }
-
+  $('#start').click(function(e){
+    e.preventDefault();
+    score.populateCategories();
+    $("#start").hide();
+    $("#nukeIt").show();
+    $(".pull-right").show();
+  });
   $('#newGame').click(function(e) {
     e.preventDefault();
     let currentScore = 10;
@@ -22,14 +29,12 @@ $(document).ready(function() {
 
     $(".jumbotron").hide();
     $("#newGame").hide();
-    $("#nukeIt").show();
-    $(".pull-right").show();
+
     $("#buzzIn,.center").show();
     $(".wrapper").show();
-
+    $("#start").show();
 
     score.randomQuestions();
-    score.populateCategories();
   });
 
   $('#nukeIt').click(function() {
@@ -91,8 +96,10 @@ $(document).ready(function() {
         $("#displayAnswer").html("Correct answer! " + newAnswer);
         $(".rows").toggle();
 
+        $(".btn").show();
         //score
         var elId = parseInt(myAnswerClasses.id.split('')[0]) + 1;
+
         var newScore = score.changeScore(elId);
         document.getElementById('score').innerHTML = newScore
 
@@ -106,7 +113,9 @@ $(document).ready(function() {
         $("#displayAnswer").html("Wrong, the answer is: " + newAnswer);
         $(".rows").toggle();
 
-        //score
+        $(".btn").show();
+        //score//score
+
         var elId = (parseInt(myAnswerClasses.id.split('')[0]) + 1) *(-1);
         var newScore = score.changeScore(elId);
         document.getElementById('score').innerHTML = newScore
