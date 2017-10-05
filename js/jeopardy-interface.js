@@ -67,8 +67,6 @@ $(document).ready(function() {
 
      $("#answer").click(function(e){
        e.preventDefault();
-       $(".rows").show();
-       $(".rows").removeClass('fullScreen');
      });
   }
 

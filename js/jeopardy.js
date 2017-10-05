@@ -11,20 +11,18 @@ export let score = {
     let max = Math.floor(18415);
     let result =  Math.floor((Math.random() * (max - min)) + min);
     let apiRequest1 = fetch(`http://jservice.io/api/categories?count=6&offset=${result}`)
-        .then((res) => {
-          res.json().then((test) => {
-            for (let i = 0, len = test.length; i < len; i++)
+      .then((res) => {
+        res.json().then((test) => {
+          for (let i = 0, len = test.length; i < len; i++)
             fetch(`http://jservice.io/api/clues?category=${test[i].id}`)
-                .then((res) => {
-                  res.json().then((chunky) => {
-                   firebase.database().ref().push({
-                     chunky
-                    });
-
-                   });
-
-                  });
+              .then((res) => {
+                res.json().then((chunky) => {
+                 firebase.database().ref().push({
+                   chunky
                 });
+               });
+              });
+            });
           });
         },
 
@@ -44,8 +42,6 @@ export let score = {
         e.preventDefault();
         let newAnswer = childData[col].chunky[row].answer.replace(/[^0-9<>a-z]/gi, '');
         let stuff = $("#userResponse").val().replace(/[^0-9<>a-z]/gi, '');
-        // $(".rows").show();
-        // $(".rows").removeClass("fullScreen");
 
         if (newAnswer.toLowerCase().includes(stuff.toLowerCase()) === true) {
           console.log("correct");
