@@ -62,9 +62,11 @@ $(document).ready(function() {
   // }
 
   function addAnswer(row, col){
+    console.log("in outside addAnswer");
     let newRow = row;
     let newCol = col;
     let thing = newRow + newCol;
+
 
     return ("<input id='userResponse'><button id='answer' type='click'>Submit Answer</button>")
 
@@ -101,6 +103,7 @@ $(document).ready(function() {
         console.log("nope");
       }
     });
+
   }
 
   $(".rows").click(function(e) {
@@ -109,7 +112,9 @@ $(document).ready(function() {
     $(".center").hide();
     $(".btn").hide();
     $("#nukeIt").hide();
+
     $(".rows").toggle();
+
     $(this).show();
     $(this).addClass('fullScreen');
 });

@@ -35,8 +35,10 @@ export let score = {
         snapshot.forEach((childSnapshot) => {
           childData.push(childSnapshot.val());
         })
+
         document.getElementById(elementId).innerHTML = moveToFrontEnd(childData, col, row) + addAnswer(col, row);
         submit(childData, row, col)
+
       })
     },
 
