@@ -26,7 +26,7 @@ export let score = {
           });
         },
 
-    retrieveQuestion: function(elementId, addAnswer, exitTheClass) {
+    retrieveQuestion: function(elementId, addAnswer, exitTheClass, moveToFrontEnd) {
       let coorArray=elementId.split('');
       let row = coorArray[0];
       let col = coorArray[1];
@@ -36,7 +36,7 @@ export let score = {
           childData.push(childSnapshot.val());
         })
 
-        document.getElementById(elementId).innerHTML = childData[col].chunky[row].question + addAnswer(col, row) ;
+        document.getElementById(elementId).innerHTML = moveToFrontEnd(childData, col, row) + addAnswer(col, row) ;
 
         $("#answer").click((e) => {
           e.preventDefault();

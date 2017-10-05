@@ -71,19 +71,15 @@ $(document).ready(function() {
    function exitTheClass(e){
      $(".rows").show();
      console.log(e.originalEvent.path[1].remove('fullScreen'))
-    //  let newRow = row;
-    //  let newCol = col;
-    //  let thing = newRow + newCol;
-    //  console.log('div' + "#" + thing + "." + "rows")
-    //  $('div' + "#" + thing + ".rows").removeClass('fullScreen');
-    //  console.log($(".rows"))
+  };
 
-
-   };
+  function moveToFrontEnd(childData, row, col){
+        return childData[col].chunky[row].question;
+  };
 
   $(".rows").click(function(e) {
     e.preventDefault();
-    score.retrieveQuestion(e.target.id, addAnswer, exitTheClass);
+    score.retrieveQuestion(e.target.id, addAnswer, exitTheClass, moveToFrontEnd);
     $(".center").hide();
     $(".btn").hide();
     $("#nukeIt").hide();
