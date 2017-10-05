@@ -8,11 +8,15 @@
 }
 
 body{
-  background: linear-gradient(90deg, #0000CC, #000066);
+  /*background: linear-gradient(90deg, #0000CC, #000066);*/
 }
-
-p{
-  color: #ff0;
+.welcome-page{
+  color: blue;
+  text-align: center;
+}
+h4{
+  color: blue;
+  /*color: #ff0;*/
   text-align: center;
 }
 .wrapper > div {
@@ -27,6 +31,8 @@ p{
 
 #newGame{
   margin-left: 200px;
+  margin:auto;
+  display: block;
 }
 .wrapper {
   display: grid;
@@ -37,13 +43,14 @@ p{
 }
 
 
-button, .center {
+button, .center, #nukeIt {
   margin: auto;
   width:120px;
   height: 100px;
   border-radius:100%;
   border: 1px solid red;
   background-image: radial-gradient(farthest-corner at 50px 50px , #FF9033 0%, #f44641 60%, #FF0000 95%);
+  display: block;
   /*background-image: radial-gradient(farthest-corner at 45px 45px , #FF9033 0%, #FF0000 100%);*/
 }
 
@@ -56,11 +63,6 @@ button, .center {
 
 #intro {color: #ff0; width: 0px; height: 2em; white-space: nowrap; overflow:visible; margin: center }
 
-/*#questionContainer {
-  pointer-events: all;
-}*/
-
-
 .rows.fullScreen {
   pointer-events: none;
   z-index: 9999;
@@ -71,14 +73,23 @@ button, .center {
   left: 0;
   font-size: 4vw;
 }
-input {
+input, #userResponse {
   pointer-events: all;
   color: black;
+
   display: block;
   margin: auto;
-  margin-top: 100px;
+  margin-top: 45%;
 }
 #answer{
   pointer-events: all;
+  display: block;
+  margin: auto;
+  margin-top: 50px;
 }
 
+#newGame{
+  margin-bottom: 100px;
+  margin-top: 100px;
+  color: blue;
+}

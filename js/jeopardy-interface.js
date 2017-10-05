@@ -1,14 +1,13 @@
-
-import {Question} from './../js/jeopardy.js';
 import { score } from "./../js/jeopardy.js";
 import { config } from './../api-keys';
 
 $(document).ready(function() {
 
-  var score = 0;
-
 
   $(".wrapper").hide();
+  $("#nukeIt").hide();
+  $("#buzzIn,.center").hide();
+  $(".pull-right").hide();
 
   function displayScore(currentScore, questionValue) {
     $('#displayScore').html(`<p>Your current score is: ${currentScore}`);
@@ -17,33 +16,22 @@ $(document).ready(function() {
 
   $('#newGame').click(function(e) {
     e.preventDefault();
-    // score.deleteDatabase();
-    let currentScore = 10;
-    let questionValue = 20;
-    // score.changeScore(currentScore, questionValue, displayScore);
-
-    score.randomQuestions();
-    score.populateCategories()
-    score.retrieveQuestion();
-
-  });
-
-  //Start a new game
-  $('#newGame').click(function(e) {
-    e.preventDefault();
     let currentScore = 10;
     let questionValue = 20;
 
-      $(".welcome-page").hide();
+    $(".jumbotron").hide();
+    $("#newGame").hide();
+    $("#nukeIt").show();
+    $(".pull-right").show();
+    $("#buzzIn,.center").show();
     $(".wrapper").show();
 
-   score.retrieveQuestion();
+    score.randomQuestions();
+    score.populateCategories();
   });
-
 
   $('#nukeIt').click(function() {
     score.deleteDatabase();
-    // score.getClues(displayClues);
   });
 
 
@@ -67,26 +55,32 @@ $(document).ready(function() {
   }
 
   //clear score
-  function updateScore(){
-    $('#score').empty().text(score);
-  }
+  // function updateScore(){
+  //   $('#score').empty().text(score);
+  // }
 
-  function checkAnswer(){
-    
-}
+  function addAnswer(row, col){
+    let newRow = row;
+    let newCol = col;
+    let thing = newRow + newCol;
+     return ("<input id='userResponse'><button id='answer' type='click'>Submit Answer</button>")
+
+     $("#answer").click(function(e){
+       e.preventDefault();
+       $(".rows").show();
+       $(".rows").removeClass('fullScreen');
+     });
+  }
 
   $(".rows").click(function(e) {
     e.preventDefault();
-    // e.stopImmediatePropagation();
-    let squareName = e.target.id;
-    score.retrieveQuestion(e.target.id);
+    score.retrieveQuestion(e.target.id, addAnswer);
+    $(".center").hide();
     $(".btn").hide();
+    $("#nukeIt").hide();
     $(".rows").hide();
     $(this).show();
     $(this).addClass('fullScreen');
-    // $(this).text("<input id='userResponse'><button id='answer' onclick='this.evaluateAnswer(userResponse.innerHTML)'>Submit Answer</button>");
-
-
 
 });
 

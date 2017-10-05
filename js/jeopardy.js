@@ -6,13 +6,7 @@ firebase.initializeApp(config);
 
 
 export let score = {
-
-  changeScore: function(currentScore, questionValue, displayScore) {
-        let num1 = currentScore;
-        let num2 = questionValue;
-  },
   randomQuestions: function(displayJson) {
-
     let min = Math.ceil(1);
     let max = Math.floor(18415);
     let result =  Math.floor((Math.random() * (max - min)) + min);
@@ -23,7 +17,6 @@ export let score = {
             fetch(`http://jservice.io/api/clues?category=${test[i].id}`)
                 .then((res) => {
                   res.json().then((chunky) => {
-                    console.log(this);
                    firebase.database().ref().push({
                      chunky
                     });
@@ -35,46 +28,40 @@ export let score = {
           });
         },
 
-    retrieveQuestion: function(elementId) {
+    retrieveQuestion: function(elementId,addAnswer) {
       let coorArray=elementId.split('');
-      let row=coorArray[0];
-      let col=coorArray[1];
+      let row = coorArray[0];
+      let col = coorArray[1];
       let childData = [];
+      addAnswer(col, row)
       return firebase.database().ref().once('value').then((snapshot) => {
         snapshot.forEach((childSnapshot) => {
           childData.push(childSnapshot.val());
         })
+      document.getElementById(elementId).innerHTML = childData[col].chunky[row].question + addAnswer(row, col) ;
 
+      $("#answer").click((e) => {
+        e.preventDefault();
+        let newAnswer = childData[col].chunky[row].answer.replace(/[^0-9<>a-z]/gi, '');
+        let stuff = $("#userResponse").val().replace(/[^0-9<>a-z]/gi, '');
+        // $(".rows").show();
+        // $(".rows").removeClass("fullScreen");
 
-        document.getElementById(elementId).innerHTML = childData[col].chunky[row].question + "<input id='userResponse'><button id='answer' type='submit'>Submit Answer</button>" ;
-
-        $("#answer").click((e) => {
-          e.preventDefault();
-          let stuff = $("#userResponse").val().replace(/[^0-9<>a-z]/gi, '');
-          let newAnswer = childData[col].chunky[row].answer.replace(/[^0-9<>a-z]/gi, '');
-          console.log(newAnswer.toLowerCase());
-          if (newAnswer.toLowerCase().includes(stuff.toLowerCase()) === true) {
-            console.log("correct");
-          } else {
-            console.log("nope");
-          }
-        })
+        if (newAnswer.toLowerCase().includes(stuff.toLowerCase()) === true) {
+          console.log("correct");
+        } else {
+          console.log("nope");
+        }
+      })
 
       })
     },
-
-    evaluateAnswer: function(stuff) {
-        console.log(this.childData[col].chunky[row].answer);
-        // document.getElementById(elementId).innerHTML = childData[col].chunky[row].answer;
-    },
-
     populateCategories: function() {
       let childData = [];
       return firebase.database().ref().once('value').then(function(snapshot){
         snapshot.forEach(function(childSnapshot){
           childData.push(childSnapshot.val());
         })
-
       console.log(childData[0].chunky[0].category.title)
       document.getElementById('cat0').innerHTML = childData[0].chunky[0].category.title;
       document.getElementById('cat1').innerHTML = childData[1].chunky[0].category.title;
@@ -86,7 +73,6 @@ export let score = {
     },
 
     deleteDatabase: function() {
-
      firebase.database().ref().remove()
          .then( () => {
              console.log('You have been Deleted!');
@@ -94,8 +80,9 @@ export let score = {
          .catch( e => {
              console.log(e.message);
          });
-    }
-
-
+    },
+    changeScore: function(currentScore, questionValue, displayScore) {
+          let num1 = currentScore;
+          let num2 = questionValue;
     }
 }
