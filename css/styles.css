@@ -99,3 +99,6 @@ input, #userResponse {
 fullScreen{
   display:none;
 }
+#createdDiv{
+  background-color: purple;
+}

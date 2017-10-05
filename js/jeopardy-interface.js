@@ -56,13 +56,8 @@ $(document).ready(function() {
     $(".wrapper").append("<div class='rows' id='4" + i + "'>$1000</div>");
   }
 
-  //clear score
-  // function updateScore(){
-  //   $('#score').empty().text(score);
-  // }
 
   function addAnswer(row, col){
-    console.log("in outside addAnswer");
     let newRow = row;
     let newCol = col;
     let thing = newRow + newCol;
@@ -85,21 +80,28 @@ $(document).ready(function() {
       e.preventDefault();
       let newAnswer = childData[col].chunky[row].answer.replace(/[^0-9<>a-z]/gi, '');
       let stuff = $("#userResponse").val().replace(/[^0-9<>a-z]/gi, '');
-      let myAnswerClasses = document.getElementById(col + row);
+      let myAnswerClasses = document.getElementById(row + col);
       if(newAnswer.toLowerCase().includes(stuff.toLowerCase())=== true){
 
         let div1 = document.createElement("div");
+
+        div1.style.background = 'purple' ;
+        div1.innerHTML = "Correct!"
         let wrapper = myAnswerClasses.parentNode;
         wrapper.insertBefore(div1, myAnswerClasses);
         myAnswerClasses.remove('fullScreen')
-
-
-
 
         $(".rows").toggle();
         console.log("correct");
 
       }else {
+        let div1 = document.createElement("div");
+        div1.style.background = 'red' ;
+        div1.innerHTML = "Incorrect!"
+        let wrapper = myAnswerClasses.parentNode;
+        wrapper.insertBefore(div1, myAnswerClasses);
+        myAnswerClasses.remove('fullScreen')
+        $(".rows").toggle();
         console.log("nope");
       }
     });
@@ -111,7 +113,7 @@ $(document).ready(function() {
     score.retrieveQuestion(e.target.id, addAnswer, exitTheClass, moveToFrontEnd, submit);
     $(".center").hide();
     $(".btn").hide();
-    $("#nukeIt").hide();
+    // $("#nukeIt").hide();
 
     $(".rows").toggle();
 

@@ -28,8 +28,8 @@ export let score = {
 
     retrieveQuestion: function(elementId, addAnswer, exitTheClass, moveToFrontEnd, submit) {
       let coorArray=elementId.split('');
-      let row = coorArray[0];
-      let col = coorArray[1];
+      let row = coorArray[1];
+      let col = coorArray[0];
       let childData = [];
       return firebase.database().ref().once('value').then((snapshot) => {
         snapshot.forEach((childSnapshot) => {
@@ -50,12 +50,12 @@ export let score = {
         })
 
 
-      document.getElementById('cat0').innerHTML = childData[0].chunky[0].category.title;
-      document.getElementById('cat1').innerHTML = childData[1].chunky[0].category.title;
-      document.getElementById('cat2').innerHTML = childData[2].chunky[0].category.title;
-      document.getElementById('cat3').innerHTML = childData[3].chunky[0].category.title;
-      document.getElementById('cat4').innerHTML = childData[4].chunky[0].category.title;
-      document.getElementById('cat5').innerHTML = childData[5].chunky[0].category.title;
+      document.getElementById('cat0').innerHTML = childData[0].chunky[0].category.title.toUpperCase();
+      document.getElementById('cat1').innerHTML = childData[1].chunky[0].category.title.toUpperCase();
+      document.getElementById('cat2').innerHTML = childData[2].chunky[0].category.title.toUpperCase();
+      document.getElementById('cat3').innerHTML = childData[3].chunky[0].category.title.toUpperCase();
+      document.getElementById('cat4').innerHTML = childData[4].chunky[0].category.title.toUpperCase();
+      document.getElementById('cat5').innerHTML = childData[5].chunky[0].category.title.toUpperCase();
     })
 
     },
