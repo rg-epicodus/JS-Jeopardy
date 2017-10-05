@@ -22,17 +22,17 @@
   grid-template-columns: repeat(6, 1fr);
   grid-gap: 0px;
   grid-auto-rows: minmax(100px, auto);
-  margin-bottom: 10px;
+  margin-bottom: 50px;
 }
 
-
-#hitMe, .center {
+button, .center {
   margin: auto;
   width:100px;
   height: 100px;
   border-radius:100%;
   border: 1px solid red;
   background-image: radial-gradient(farthest-corner at 50px 50px , #FF9033 0%, #f44641 60%, #FF0000 95%);
+  /*background-image: radial-gradient(farthest-corner at 45px 45px , #FF9033 0%, #FF0000 100%);*/
 }
 
 #timeOut {
@@ -41,22 +41,12 @@
   margin-top: 20px;
   font-size: 20px;
 }
-#intro {color: red; width: 0px; height: 2em; white-space: nowrap; overflow: hidden; margin: auto }
 
-/*#questionContainer {
-  pointer-events: all;
-}*/
-
-.rows.fullScreen {
-  pointer-events: none;
-  z-index: 9999;
-  height:100%;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  font-size: 100px;
+#intro {
+  color: red;
+  width: 0px;
+  height: 2em;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: auto
 }
-/*.rows.fullScreen.questionContainer{
-  pointer-events: all;
-}*/

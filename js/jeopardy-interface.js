@@ -72,9 +72,12 @@ $(document).ready(function() {
 
 });
 
-$("#hitMe").keydown(function(e) {
-  if(e.keyCode === 17){
-      score.setTimer();}
+// var spanWidth = $('#intro span').width();
+// $('#intro').animate( { width: spanWidth }, 6000 );
+
+$(document).keydown(function(e) {
+  if(e.keyCode === 17)
+      score.setTimer();
 });
 // $("#hitMe").click(function(){
 //   score.setTimer();
